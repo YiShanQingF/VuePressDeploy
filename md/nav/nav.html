@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>开发百宝箱 | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/favicon.ico">
+    <script charset="utf-8" async="async" src="/js/jquery.min.js"></script>
+    <script charset="utf-8" async="async" src="/js/global.js"></script>
+    <script charset="utf-8" async="async" src="/js/fingerprint2.min.js"></script>
+    <script>
+              var _hmt = _hmt || [];
+              (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?0b31b4c146bf7126aed5009e1a4a11c8";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+              })();
+            </script>
+    <meta name="description" content="记录学习笔记、项目心得、趟过的雷、踩过的坑">
+    <meta myNavPage="myNavPage">
+    <meta type="excellentNav" typeName="优质导航">
+    <meta type="niceBlog" typeName="优质博客">
+    <meta type="Github" typeName="项目代码">
+    <meta type="technicalCommunity" typeName="技术社区">
+    <meta type="BasicCourse" typeName="基础教程">
+    <meta type="BackDev" typeName="后端开发">
+    <meta type="webDev" typeName="前端开发">
+    <meta type="Algorithm" typeName="算法数据结构">
+    <meta type="project" typeName="推荐项目">
+    <meta type="ebook" typeName="电子书">
+    <meta type="tool" typeName="在线工具">
+    <meta type="software" typeName="常用软件">
+    <meta type="Idea" typeName="idea">
+    <meta title="编程导航" img="/images/nav_logo/code-nav.png" des="帮你找到优质的编程学习资源！" url="https://www.code-nav.cn/" type="excellentNav">
+    <meta title="学吧导航" img="/images/nav_logo/xue8nav.png" des="四十万学习爱好者都在用的学霸导航网站" url="https://www.xue8nav.com/" type="excellentNav">
+    <meta title="CXY521" img="/images/nav_logo/cxy521.png" des="CXY521是一个致力于一站式程序员学习工作娱乐导航网站" url="http://www.cxy521.com/" type="excellentNav">
+    <meta title="Tbox导航" img="/images/nav_logo/tboxn.png" des="只收录优质在线工具的导航网站" url="https://www.tboxn.com/" type="excellentNav">
+    <meta title="iTab" img="/images/nav_logo/itab.ico" des="自定义您新标签页上的网站和壁纸以及搜索引擎,创建和编辑属于您自己的浏览器标签页,精美日历、炫酷天气、每日头条、海量壁纸、常用网址随心订制" url="https://itab.link/" type="excellentNav">
+    <meta title="下次一定" img="/images/nav_logo/iiice.png" des="专门为白嫖怪开发的宝藏网站" url="https://www.iiice.cn/" type="excellentNav">
+    <meta title="e站联导航" img="/images/nav_logo/zhanlian.png" des="编程导航 程序员的上网主页" url="https://www.zhanlian.net/code" type="excellentNav">
+    <meta title="LKs Site" img="/images/nav_logo/lkssite.jpg" des="LKs - 良心到难以置信的网站推荐" url="https://lkssite.vip/" type="excellentNav">
+    <meta title="CDSN" img="/images/nav_logo/csdn.gif" des="中国专业IT社区CSDN" url="http://www.csdn.net/" type="technicalCommunity">
+    <meta title="博客园" img="/images/nav_logo/cnblog.gif" des="开发者的网上家园" url="http://www.cnblogs.com/" type="technicalCommunity">
+    <meta title="OSChina" img="/images/nav_logo/oschina.gif" des="中国最大的开源技术社区" url="https://www.oschina.net" type="technicalCommunity">
+    <meta title="思否" img="/images/nav_logo/segmentfault.png" des="中国领先的开发者技术社区" url="https://segmentfault.com/" type="technicalCommunity">
+    <meta title="掘金" img="/images/nav_logo/juejin.svg" des="掘金是一个帮助开发者成长的社区，是一个面向互联网技术人的内容分享平台" url="https://juejin.im" type="technicalCommunity">
+    <meta title="Linux公社" img="/images/nav_logo/linuxidc.jpg" des="Linux系统门户网站" url="https://www.linuxidc.com/" type="technicalCommunity">
+    <meta title="51CTO" img="/images/nav_logo/51cto.gif" des="中国领先的IT技术网站" url="https://www.51cto.com/" type="technicalCommunity">
+    <meta title="IBM 开发者" img="/images/nav_logo/ibm.jpeg" des="IBM开发者社区" url="https://www.ibm.com/developerworks/cn/" type="technicalCommunity">
+    <meta title="StackOverflow" img="/images/nav_logo/stackoverflow.png" des="Stack Overflow是一个与程序相关的IT技术问答网站" url="https://stackoverflow.com" type="technicalCommunity">
+    <meta title="牛客网" img="/images/nav_logo/nowcoder.png" des="海量题库、多样竞赛、求职交流" url="https://www.nowcoder.com/" type="technicalCommunity">
+    <meta title="力扣" img="/images/nav_logo/leetcode.svg" des="算法题库" url="https://leetcode.cn/" type="technicalCommunity">
+    <meta title="炼码" img="/images/nav_logo/lintcode.svg" des="必刷题集与企业真题" url="https://www.lintcode.com/" type="technicalCommunity">
+    <meta title="hihocoder" img="/images/nav_logo/hihocoder.png" des="程序设计比赛提升编程水平" url="http://hihocoder.com/" type="technicalCommunity">
+    <meta title="Quick Reference" img="/images/nav_logo/quickref.svg" des="为开发人员分享快速参考备忘清单【速查表】" url="https://quickref.cn/" type="BasicCourse">
+    <meta title="在线API文档" img="/images/nav_logo/oschina.svg" des="OSCHINA.NET在线工具,ostools为开发设计人员提供在线工具，提供jsbin在线 CSS、JS 调试，在线 Java API文档,在线 PHP API文档,在线 Node.js API文档,Less CSS编译器，MarkDown编译器等其他在线工具" url="https://tool.oschina.net/apidocs" type="BasicCourse">
+    <meta title="W3Cschool词典库" img="/images/nav_logo/w3cschool.ico" des="W3Cschool词典大全，汇集海量技术词典、编程词典等知识帮助开发者更快更精准获取需要的内容" url="https://www.w3cschool.cn/tutorial" type="BasicCourse">
+    <meta title="How2J 的 Java教程" img="/images/nav_logo/how2j.png" des="How2J的Java教程, 内容涵盖J2SE、WEB前端、J2EE、框架技术等全面的Java内容。 基于实例代码和视频讲解的学习方式为Java职业生涯打下坚实的基础" url="https://how2j.cn/" type="BasicCourse">
+    <meta title="w3school 在线教程" img="/images/nav_logo/w3school.png" des="全球最大的中文 Web 技术教程。" url="https://www.w3school.com.cn/" type="BasicCourse">
+    <meta title="iBooker 布客" img="/images/nav_logo/iBooker.png" des="文档社区-可以允许不完美，但不能不做 ｜ ApacheCN" url="https://docs.apachecn.org/" type="BasicCourse">
+    <meta title="Element Plus" img="/images/nav_logo/element-plus-logo.svg" des="基于 Vue 3，面向设计师和开发者的组件库" url="https://element-plus.gitee.io/zh-CN/component/button.html" type="webDev">
+    <meta title="Element" img="/images/nav_logo/element.svg" des="Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库" url="https://element.eleme.cn/#/zh-CN/component/installation" type="webDev">
+    <meta title="jQuery API" img="/images/nav_logo/jQuery.gif" des="jQuery API 速查表" url="https://jquery.cuishifeng.cn/" type="webDev">
+    <meta title="jQuery API 中文文档" img="/images/nav_logo/jquery123.png" des="jQuery：用更少的代码完成更多工作！jQuery 是一个最流行的 JavaScript 工具库。" url="https://www.jquery123.com/" type="webDev">
+    <meta title="Bootstrap" img="/images/nav_logo/Bootstrap.ico" des="简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。" url="https://www.bootcss.com/" type="webDev">
+    <meta title="layui" img="/images/nav_logo/Layui.webp" des="基于浏览器端原生态模式，面向全层次的前后端开发者，易上手且开源免费的 Web 界面组件库" url="https://layui.gitee.io/v2/" type="webDev">
+    <meta title="Plupload" img="/images/nav_logo/plupload.png" des="Plupload上传插件中文帮助文档" url="https://www.phpin.net/tools/plupload/" type="webDev">
+    <meta title="JavaSE系列 笔记" img="/images/nav_logo/qingkongxiaguang.png" des="这是来自一个没有团队，没有机构，仅仅是一个热爱Java开发的带学生UP主完成的学习路线，所有的资料、源码可以直接下载。" url="https://www.yuque.com/qingkongxiaguang/javase" type="BackDev">
+    <meta title="Java API" img="/images/nav_logo/java.jpg" des="Java™ Platform, Standard Edition 8 API Specification" url="https://www.idannywu.com/apidoc/" type="BackDev">
+    <meta title="优程" img="/images/nav_logo/uprogrammer.jpg" des="优程，成为优秀程序员必备的优秀教程" url="http://uprogrammer.cn/" type="BackDev">
+    <meta title="Spring Cloud 中文网" img="/images/nav_logo/spring-1.png" des="Spring Cloud集成相关优质项目推荐" url="https://www.springcloud.cc/" type="BackDev">
+    <meta title="Spring Cloud 中文索引" img="/images/nav_logo/spring-1.png" des="Spring Cloud集成相关优质项目推荐" url="http://springcloud.fun/" type="BackDev">
+    <meta title="Spring Boot 中文索引" img="/images/nav_logo/spring-1.png" des="Spring Boot 中文社区资源链接导航，开源代码，博客，工具等" url="http://springboot.fun/" type="BackDev">
+    <meta title="SpringBootGuide" img="/images/nav_logo/spring-boot-guide.png" des="Spring Boot 学习/面试指南" url="https://snailclimb.gitee.io/springboot-guide/#/" type="BackDev">
+    <meta title="Hutool" img="/images/nav_logo/Hutool.jpg" des="Hutool谐音“糊涂”，一方面简洁易懂，一方面寓意“难得糊涂”。" url="https://hutool.cn/docs/#/" type="BackDev">
+    <meta title="MyBatis" img="/images/nav_logo/mybatis-logo.png" des="MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。" url="https://mybatis.org/mybatis-3/zh/index.html" type="BackDev">
+    <meta title="MyBatis-Plus" img="/images/nav_logo/MyBatis-Plus.svg" des="为简化开发而生" url="https://baomidou.com/" type="BackDev">
+    <meta title="MyBatisCodeHelper-Pro" img="/images/nav_logo/MyBatisCodeHelperPro.svg" des="IntelliJ IDEA Plugins" url="http://118.24.53.162/#/" type="BackDev">
+    <meta title="Linux命令大全(手册)" img="/images/nav_logo/linuxcool.webp" des="Linux命令大全(手册) – 真正好用的Linux命令在线查询网站" url="https://www.linuxcool.com/" type="BackDev">
+    <meta title="Linux命令搜索引擎" img="/images/nav_logo/Linux.svg" des="Linux命令搜索引擎:最专业的Linux命令大全，内容包含Linux命令手册、详解、学习，值得收藏的Linux命令速查手册。 - 最专业的Linux命令大全，内容包含Linux命令手册、详解、学习，值得收藏的Linux命令速查手册。" url="https://wangchujiang.com/linux-command/" type="BackDev">
+    <meta title="正则教程" img="/images/nav_logo/deerchao.ico" des="正则教程" url="https://deerchao.cn/" type="BackDev">
+    <meta title="VisuAlgo" img="/images/nav_logo/visualgo.png" des="VisuAlgo 数据结构和算法动态可视化" url="https://visualgo.net/zh" type="Algorithm">
+    <meta title="吴师兄学算法" img="/images/nav_logo/algomooc.jpg" des="看动画，拿 Offer" url="https://blog.algomooc.com/" type="Algorithm">
+    <meta title="Hello 算法" img="/images/nav_logo/hello-algo.png" des="动画图解、一键运行的数据结构与算法教程" url="https://www.hello-algo.com/" type="Algorithm">
+    <meta title="若依" img="/images/nav_logo/ruoyi.png" des="使用若依快速构建web应用程序" url="http://ruoyi.vip/" type="project">
+    <meta title="JeeSite" img="/images/nav_logo/jeesite.png" des="Java 快速开发平台，不仅仅是一个后台开发框架，它是一个企业级快速开发解决方案，采用经典开发模式，提供 Spring Boot 在线代码生成功能。" url="https://jeesite.com/" type="project">
+    <meta title="xxl-job" img="/images/nav_logo/xuxueli.jpg" des="分布式任务调度平台" url="https://www.xuxueli.com/xxl-job/" type="project">
+    <meta title="JeecgBoot" img="/images/nav_logo/jeecg.png" des="JeecgBoot是一款基于BPM的低代码平台！前后端分离架构 SpringBoot 2.x，SpringCloud，Ant Design&amp;Vue，Mybatis-plus，Shiro，JWT，支持微服务。" url="http://www.jeecg.com/" type="project">
+    <meta title="jeepay" img="/images/nav_logo/jeepay.svg" des="Jeepay是一套适合互联网企业使用的开源支付系统，已实现交易、退款、转账、分账等接口，支持服务商特约商户和普通商户接口。已对接微信，支付宝，云闪付官方接口，支持聚合码支付。" url="https://www.jeequan.com/" type="project">
+    <meta title="Cloud-Platform" img="/images/nav_logo/Cloud-Platform.png" des="国内首个Spring Cloud微服务化RBAC的管理平台，核心采用Spring Boot 2.4、Spring Cloud 2020.0.0 &amp; Alibaba，前端采用d2-admin中台框架。" url="https://gitee.com/geek_qi/cloud-platform" type="project">
+    <meta title="OPCoder" img="/images/nav_logo/opcoder.ico" des="OPCoder是一个Django搭建的博客，前端使用Bootstrap框架，主要分享博主在Python以及其他编程语言的学习心得。" url="http://www.opcoder.cn/" type="niceBlog">
+    <meta title="bugstack 虫洞栈" img="/images/nav_logo/bugstack.ico" des="包含: Java 基础，面经手册，Netty4.x，手写Spring，用Java实现JVM，重学Java设计模式，SpringBoot中间件开发，IDEA插件开发，DDD系统架构项目开发，字节码编程..." url="https://bugstack.cn/" type="niceBlog">
+    <meta title="Java 全栈知识体系" img="/images/nav_logo/pdai.png" des="包含: Java 基础, Java 部分源码, JVM, Spring, Spring Boot, Spring Cloud, 数据库原理, MySQL, ElasticSearch, MongoDB, Docker, k8s, CI&amp;CD, Linux, DevOps, 分布式, 中间件, 开发工具, Git, IDE, 源码阅读，读书笔记, 开源项目..." url="https://www.pdai.tech/" type="niceBlog">
+    <meta title="Road To Coding" img="/images/nav_logo/r2coding.png" des="本站取名为 r2coding，即 Road To Coding，意为编程自学之路，是自学编程以来所用资源和分享内容的大聚合。" url="https://r2coding.com/" type="niceBlog">
+    <meta title="JavaGuide" img="/images/nav_logo/javaguide.svg" des="「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。准备 Java 面试，首选 JavaGuide！" url="https://javaguide.cn/" type="niceBlog">
+    <meta title="赛泰先生" img="/images/nav_logo/altitude.ico" des="赛泰先生 - 博客天地" url="https://www.altitude.xin/blog/home/" type="niceBlog">
+    <meta title="鱼皮的编程宝典" img="/images/nav_logo/codefather.png" des="贴心的编程学习路线，全面的编程知识百科" url="https://www.codefather.cn/" type="niceBlog">
+    <meta title="陌溪的学习笔记" img="/images/nav_logo/moguit.ico" des="笔记主要涵盖：Java，Spring，SpringCloud，计算机网络，操作系统，数据结构，Vue等" url="http://note.moguit.cn/" type="niceBlog">
+    <meta title="CyC" img="/images/nav_logo/cyc2018.png" des="技术面试必备基础知识、Leetcode、计算机操作系统、计算机网络、系统设计" url="http://www.cyc2018.xyz/" type="niceBlog">
+    <meta title="码神之路知识体系" img="/images/nav_logo/mszlu.png" des="Java和Go的全系列教程资料" url="https://www.mszlu.com/" type="niceBlog">
+    <meta title="简言之" img="/images/nav_logo/jwt1399.png" des="慢慢来，比较快！" url="https://jwt1399.top/" type="niceBlog">
+    <meta title="老卫的博客" img="/images/nav_logo/waylau.jpg" des="关注编程、系统架构、性能优化" url="https://waylau.com/" type="niceBlog">
+    <meta title="架构师必看" img="/images/nav_logo/javajgs.jpg" des="Java架构师必看致力于分享优质文章教程【java程序员从初级到中级进阶高级架构师黑马】;搜集全网高质量学习书籍面试题视频项目;让您系统提升java架构技术,免培训工资翻倍。" url="https://javajgs.com/" type="niceBlog">
+    <meta title="Javaᶜⁿ 面试突击" img="/images/nav_logo/javacn.ico" des="一站式刷题网站，找工作不孤单~" url="https://www.javacn.site/" type="niceBlog">
+    <meta title="阿秀的学习笔记" img="/images/nav_logo/interviewguide.png" des="懂了，马上开卷 →" url="https://interviewguide.cn/" type="niceBlog">
+    <meta title="顶尖架构师栈" img="/images/nav_logo/arcstack.png" des="顶尖架构师栈" url="https://arcstack.top/" type="niceBlog">
+    <meta title="程序员大彬" img="/images/nav_logo/topjavaer.png" des="优质的编程学习网站" url="https://topjavaer.cn/" type="niceBlog">
+    <meta title="Java个体户" img="/images/nav_logo/icon/java-2.svg" des="Java个体户" url="https://www.javaself.cn/" type="niceBlog">
+    <meta title="Lixx Blog-李晓旭的博客" img="/images/nav_logo/Lixx_Blog.png" des="Lixx Blog-李晓旭的博客" url="https://lixx.cn/" type="niceBlog">
+    <meta title="CodeGuide | 程序员编码指南" img="/images/nav_logo/CodeGuide.png" des="小傅哥 bugstack虫洞栈 文章所涉及到的全部开源代码" url="https://github.com/fuzhengwei/CodeGuide" type="Github">
+    <meta title="z-library" img="/images/nav_logo/z-library.ico" des="您通往知识和文化的门户。 每个人都可以使用。" url="https://zh.z-library.se/" type="ebook">
+    <meta title="书享家" img="/images/nav_logo/shuxiangjia.png" des="分享读书之美" url="https://www.shuxiangjia.cn/" type="ebook">
+    <meta title="免费图书集合" img="/images/nav_logo/waylau.jpg" des="books-collection 给程序员的开源、免费图书集合" url="https://github.com/waylau/books-collection" type="ebook">
+    <meta title="CS-Books" img="/images/nav_logo/CS-Books.png" des="超过1000本的计算机经典书籍分享" url="https://github.com/forthespada/CS-Books" type="ebook">
+    <meta title="图解计算机基础" img="/images/nav_logo/xiaolincoder.png" des="小林 x 图解计算机基础" url="https://github.com/xiaolincoder/CS-Base" type="ebook">
+    <meta title="书火" img="/images/nav_logo/fire100.png" des="书火-FireBook | 一个免费程序员编程资源分享网站" url="https://fire100.top/" type="ebook">
+    <meta title="Pro Git（中文版）" img="/images/nav_logo/git.ico" des="Pro Git（中文版）" url="https://git.oschina.net/progit/" type="ebook">
+    <meta title="LeetCode" img="/images/nav_logo/leetcode.svg" des="LeetCode 题解" url="https://books.halfrost.com/leetcode/" type="ebook">
+    <meta title="Spring Boot2 文档" img="/images/nav_logo/zimug.png" des="手摸手教你学spring boot 2.x" url="https://www.kancloud.cn/hanxt/springboot2/1492077" type="ebook">
+    <meta title="Spring 实战(第6版)MEAP" img="/images/nav_logo/spring-in-action-v6.png" des="Spring 实战（第 6 版）预计将于 2022 年 2 月出版。现在的翻译基于 Manning 出版社的 MEAP 版本。" url="https://leonli0102.github.io/spring-in-action-v6/" type="ebook">
+    <meta title="源码阅读网" img="/images/nav_logo/coderead.png" des="让源码变得更简单" url="https://www.coderead.cn/home/index.html" type="tool">
+    <meta title="百度脑图" img="/images/nav_logo/naotu.baidu.ico" des="百度脑图，便捷的脑图编辑工具。让您在线上直接创建、保存并分享你的思路。" url="https://naotu.baidu.com/home" type="tool">
+    <meta title="boardmix博思白板" img="/images/nav_logo/boardmix.svg" des="在boardmix，搭建你自己的工作流" url="https://boardmix.cn/app/home" type="tool">
+    <meta title="Process On" img="/images/nav_logo/processon.svg" des="免费在线流程图思维导图" url="https://www.processon.com/" type="tool">
+    <meta title="奶牛快传" img="/images/nav_logo/cowtransfer.png" des="奶牛快传, cowtransfer, 快传,互传,网盘, 不限速,文件下载,视频下载,云存储,网盘下载,网盘资源,wetransfer,musetransfer,文件上传, 视频上传, 上传工具,安全快速发送文件" url="https://cowtransfer.com/" type="tool">
+    <meta title="AirPortal" img="/images/nav_logo/airportal.png" des="AirPortal（空投快传）是一个可以跨设备传输文件的网站。只要您的设备联网，您就可以通过它在任意系统、任意设备间传输文件。" url="https://airportal.cn/" type="tool">
+    <meta title="结构化 SQL 生成器" img="/images/nav_logo/yupi.jpg" des="用 JSON 来生成结构化的 SQL 语句，基于 Vue3 + TypeScript + Vite + Ant Design + MonacoEditor 实现，项目简单（重逻辑轻页面）、适合练手~" url="http://sql.yupi.icu/" type="tool">
+    <meta title="小白学堂" img="/images/nav_logo/itmind.png" des="小白学堂-插件  资源 Idea 破解码 激活码 idea激活码  程序员" url="http://www.itmind.net/" type="tool">
+    <meta title="iconfont" img="/images/nav_logo/iconfont.svg" des="iconfont-阿里巴巴矢量图标库" url="https://www.iconfont.cn/" type="tool">
+    <meta title="装机软件列表" img="/images/nav_logo/wps/et-60.et-60.svg" des="个人常用以及收集软件记录" url="https://kdocs.cn/l/cqurpf5yfszw" type="software">
+    <meta title="dev-sidecar" img="/images/nav_logo/dev-sidecar.png" des="开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速" url="https://github.com/docmirror/dev-sidecar" type="software">
+    <meta title="SwitchHosts" img="/images/nav_logo/SwitchHosts.png" des="SwitchHosts 是一个管理 hosts 文件的应用" url="https://github.com/oldj/SwitchHosts" type="software">
+    <meta title="IntelliJ IDEA" img="/images/nav_logo/IntelliJ IDEA.svg" des="领先的 Java 和 Kotlin IDE，使开发更高效、更愉快的 IDE" url="https://www.jetbrains.com.cn/idea/" type="software">
+    <meta title="QuickRedis" img="/images/nav_logo/quick_redis.png" des="QuickRedis 是一款 永久免费 的 Redis 可视化管理工具。它支持直连、哨兵、集群模式，支持亿万数量级的 key。QuickRedis 支持 Windows 、 Mac OS X 和 Linux 下运行。" url="https://quick123.net/" type="software">
+    <meta title="PL/SQL DEVELOPER" img="/images/nav_logo/plsqldev-13.ico" des="Save time and money on your PL/SQL Development" url="https://www.allroundautomations.com/products/pl-sql-developer/" type="software">
+    <meta title="PDMan" img="/images/nav_logo/pdman.ico" des="数据库建模过程精细提炼，化繁为简，省去不必要的操作，只留下最需要的" url="http://www.pdman.cn/" type="software">
+    <meta title="jprofiler" img="/images/nav_logo/jprofiler.png" des="JProfiler intuitive UI helps you resolve performance bottlenecks,pin down memory leaks and understand threading issues." url="https://www.ej-technologies.com/" type="software">
+    <meta title="SumatraPDF" img="/images/nav_logo/sumatrapdfreader.ico" des="PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for Windows. Small, fast, customizable, free." url="https://www.sumatrapdfreader.org/free-pdf-reader" type="software">
+    <meta title="Everything" img="/images/nav_logo/Everything.png" des="基于名称快速定位文件和文件夹。" url="https://www.voidtools.com/zh-cn/" type="software">
+    <meta title="eSearch" img="/images/nav_logo/esearch.svg" des="识屏 · 搜索" url="https://esearch-app.netlify.app/" type="software">
+    <meta title="Snipaste" img="/images/nav_logo/snipaste.svg" des="Snipaste 是一个简单但强大的截图工具，也可以让你将截图贴回到屏幕上！" url="https://zh.snipaste.com/" type="software">
+    <meta title="OBS" img="/images/nav_logo/obs.png" des="OBS Studio - Free and open source software for live streaming and screen recording" url="https://obsproject.com/" type="software">
+    <meta title="Sublime Text" img="/images/nav_logo/sublime_text.png" des="Text Editing, Done Right" url="http://www.sublimetext.com/" type="software">
+    <meta title="eDiary" img="/images/nav_logo/eDiary.png" des="电子日记本的老窝。" url="http://www.haoxg.net/" type="software">
+    <meta title="Logseq" img="/images/nav_logo/logseq.png" des="Logseq is a privacy-first, open-source knowledge base that works on top of local plain-text Markdown and Org-mode files. Use it to write, organize and share your thoughts, keep your to-do list, and build your own digital garden." url="https://logseq.com/" type="software">
+    <meta title="Typora" img="/images/nav_logo/typora.png" des="一款 Markdown 编辑器和阅读器" url="https://www.typoraio.cn/" type="software">
+    <meta title="PicGo" img="/images/nav_logo/PicGo.png" des="图片上传+管理新体验" url="https://molunerfinn.com/PicGo/" type="software">
+    <meta title="Honeyview" img="/images/nav_logo/Honeyview.png" des="Honeyview 是一款快速的图片查看器" url="http://www.bandisoft.com/honeyview/" type="software">
+    <meta title="QuickLook" img="/images/nav_logo/QuickLook.png" des="Bring macOS “Quick Look” feature to Windows" url="https://github.com/QL-Win/QuickLook/releases" type="software">
+    <meta title="PowerToys" img="/images/nav_logo/PowerToys.ico" des="Windows system utilities to maximize productivity" url="https://github.com/microsoft/PowerToys" type="software">
+    <meta title="唧唧Down" img="/images/nav_logo/jijidown.ico" des="这是一个用于下载 bilibili 视频的PC应用程序, 它能够下载 99% bilibili 视频" url="http://client.jijidown.com/" type="software">
+    <meta title="uTool" img="/images/nav_logo/tools.ico" des="新一代效率工具平台，自由组合插件应用，打造专属你的趁手工具集" url="https://www.u.tools/" type="software">
+    <meta title="优启通" img="/images/nav_logo/itsk.png" des="优启通（EasyU，简称EU）是IT天空精心打造的一款系统预安装环境（PE）" url="https://www.itsk.com/thread-427560-1-1.html" type="software">
+    <meta title="Afterburner" img="/images/nav_logo/Afterburner.png" des="PC 性能监控" url="https://www.msi.com/Landing/afterburner/graphics-cards" type="software">
+    <meta title="IntelliJ IDEA 下载" img="/images/nav_logo/IntelliJ IDEA.svg" des="获取 IntelliJ IDEA 的历史版本。" url="https://www.jetbrains.com.cn/idea/download/other.html" type="Idea">
+    <meta title="IntelliJ IDEA 功能介绍" img="/images/nav_logo/IntelliJ IDEA.svg" des="IntelliJ IDEA – 领先的 Java 和 Kotlin IDE 使开发更高效、更愉快的 IDE" url="https://www.jetbrains.com.cn/idea/features/" type="Idea">
+    <meta title="IntelliJ IDEA 最新变化" img="/images/nav_logo/IntelliJ IDEA.svg" des="在 IntelliJ IDEA 2022.3 中，可以通过设置切换到新 UI，即可预览焕然一新的 IDE 外观。 此版本引入了一个新的 Settings Sync（设置同步）解决方案，用于同步和备份自定义用户设置。 此外，IntelliJ IDEA Ultimate 还提供了一种处理 WSL 2 中的项目的新方式、适用于 Spring Bean 自动装配和 OpenAPI 架构生成的新操作，以及备受期待的 Redis 支持。" url="https://www.jetbrains.com.cn/idea/whatsnew/" type="Idea">
+    <meta title="知了" img="/images/nav_logo/zhile.png" des="知了 – 朝闻道，夕可眠矣。" url="https://zhile.io/" type="Idea">
+    <meta title="IntelliJ IDEA 激活码" img="/images/nav_logo/jiweichengzhu.ico" des="idea pycharm webstrom goland phpstorm注册码激活码_积微成著" url="https://www.jiweichengzhu.com/ide/code" type="Idea">
+    <meta title="IntelliJ IDEA 破解教程" img="/images/nav_logo/jiweichengzhu.ico" des="idea如何破解激活？如何永久激活？idea已经更新到2022.2版本了，这里不仅有最新的idea激活码，还有2022.2版本最新的永久破解激活方法，和一些常见idea激活时遇到的疑难杂症。激活资料下载地址：https://www.jiweichengzhu.com/idea/code" url="https://www.jiweichengzhu.com/topic/85dab3064dff41198b5a02d164e2d6c3" type="Idea">
+    <meta title="IDEA注册码" img="/images/nav_logo/javatiku.ico" des="免费提供最新IDEA注册码" url="https://idea.javatiku.cn/" type="Idea">
+    <meta title="JRebel 免费激活图文教程" img="/images/nav_logo/jiweichengzhu.ico" des="IntelliJ IDEA热部署插件JRebel免费激活图文教程" url="https://www.jiweichengzhu.com/article/33c0330308f5429faf7a1e74127c9708" type="Idea">
+    <meta title="JRebel 插件使用详解" img="/images/nav_logo/csdn.png" des="Jrebel 可快速实现热部署，节省了大量重启时间，提高了个人开发效率。" url="https://blog.csdn.net/lianghecai52171314/article/details/105637251" type="Idea">
+    <meta title="Idea 教程汇总篇" img="/images/nav_logo/csdn.png" des="Jrebel 可快速实现热部署，节省了大量重启时间，提高了个人开发效率。" url="https://blog.csdn.net/fanrenxiang/article/details/80503490" type="Idea">
+    <meta title="IntelliJ IDEA 教程" img="/images/nav_logo/JaJian.png" des="IntelliJ IDEA 教程" url="https://www.cnblogs.com/jajian/tag/IntelliJ%20IDEA/" type="Idea">
+    <meta title="IDEA 高效使用指南" img="/images/nav_logo/IntelliJ IDEA.svg" des="IDEA 高效使用指南" url="https://idea.javaguide.cn/" type="Idea">
+    <meta title="IDEA 关闭更新提示" img="/images/nav_logo/exception.jpg" des="通常情况下，当我们打开 IDEA 后， 如果 IDEA 检测到官方有最新的版本，在右下角都会弹出提示框，提示我们是否需要将 IDEA 升级到最新版本" url="https://www.exception.site/article/30" type="Idea">
+    <meta title="Idea注入Mapper警告" img="/images/nav_logo/csdn.png" des="使用IntelliJ IDEA的小伙伴一定知道在使用Mybaits的时候，注入mapper的是一直会有一个红色的警告" url="https://blog.csdn.net/kangswx/article/details/91816806" type="Idea">
+    <meta title="Idea 格式化、注释模板" img="/images/nav_logo/jianshu.png" des="统一的代码格式和注释格式，能给代码阅读上带来极大的便利，给代码改动上提高极大的效率。" url="https://www.jianshu.com/p/dab337159b83" type="Idea">
+    <meta title="Idea 方法注释报错" img="/images/nav_logo/cnblogs-logo.jpg" des="Idea如何设置忽略方法注释中参数的变化产生的报错" url="https://www.cnblogs.com/assistants/p/9851877.html" type="Idea">
+    <meta title="IDEA Debug" img="/images/nav_logo/cnblogs.svg" des="Debug用来追踪代码的运行流程，通常在程序运行过程中出现异常，启用Debug模式可以分析定位异常发生的位置，以及在运行过程中参数的变化。通常我们也可以启用Debug模式来跟踪代码的运行流程去学习三方框架的源码。" url="https://www.cnblogs.com/chiangchou/p/idea-debug.html" type="Idea">
+    <meta title="高效使用IDEA" img="/images/nav_logo/IntelliJ IDEA.svg" des="熟练使用以下技巧后不用鼠标也可体验到丝滑的IDEA，编码速度有质的飞跃。" url="http://blog.zhaojishun.cn/articles/2020/01/27/1580092173752.html" type="Idea">
+    <meta title="IDEA高效使用教程" img="/images/nav_logo/IntelliJ IDEA.svg" des="安装好Intellij idea之后，进行如下的初始化操作，工作效率提升十倍。" url="https://www.shuzhiduo.com/A/pRdBDog2Jn/" type="Idea">
+    <meta title="Lombok 安装使用" img="/images/nav_logo/csdn.png" des="在以前的java代码中有很多不友好，重复的代码，POJO的getter/setter/toString；异常处理；I/O流的关闭操作等，既没什么技术含量，又影响代码的简洁度。于是lombok诞生了，它可以帮助我们通过注解的方式实现实体类的set/get/toString等相关的方法。" url="https://blog.csdn.net/kangswx/article/details/89638682" type="Idea">
+    <meta title="玩转IDEA" img="/images/nav_logo/didispace.png" des="帮助你了解IDEA更多牛x的功能、还会给你推荐很多有意思的插件！" url="https://www.didispace.com/idea-tips/" type="Idea">
+    <meta property="article:modified_time" content="2024-05-08T14:24:56.000Z">
+    <meta property="og:title" content="开发百宝箱">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="/md/nav/nav.html">
+    <meta name="twitter:title" content="开发百宝箱">
+    <meta name="twitter:url" content="/md/nav/nav.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="all">
+    <meta name="author" content="青山">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="keywords" content="学习笔记, DDD抽奖系统，数据结构，重学Java设计模式, 字节码编程, 中间件, 手写Spring, 手写MyBatis，Java基础, 面经手册，面试题，API网关，SpringBoot Stater">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="preload" href="/assets/css/0.styles.4e2267cf.css" as="style"><link rel="preload" href="/assets/css/styles.css?v=1722145213052" as="style"><link rel="preload" href="/assets/js/cg-styles.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-app.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-4.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-2.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-25.js?v=1722145213052" as="script">
+    <link rel="stylesheet" href="/assets/css/0.styles.4e2267cf.css"><link rel="stylesheet" href="/assets/css/styles.css?v=1722145213052">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/md/nav/nav.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  导航
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="读书&amp;笔记" class="dropdown-title"><span class="title">读书&amp;笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/book/Java Multithread Programming/Java多线程编程核心技术（第3版）.html" class="nav-link">
+  Java多线程编程核心技术（第3版）
+</a></li><li class="dropdown-subitem"><a href="/md/book/OnJava中文版基础/第一章.html" class="nav-link">
+  On Java 中文版 基础
+</a></li><li class="dropdown-subitem"><a href="/md/sad/必修2-计算机基础.html" class="nav-link">
+  架构师
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java 基础
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/HelloJava.html" class="nav-link">
+  Hello Java
+</a></li><li class="dropdown-subitem"><a href="/md/java/core/Java-基础-变量.html" class="nav-link">
+  Java 基础
+</a></li><li class="dropdown-subitem"><a href="/md/java/core/Java-基础-面向对象.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>
+          JVM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/jvm/JVM-基础-类字节码详解.html" class="nav-link">
+  JVM 基础
+</a></li><li class="dropdown-subitem"><a href="/md/java/jvm/GC-Java-垃圾回收基础知识.html" class="nav-link">
+  GC
+</a></li></ul></li><li class="dropdown-item"><h4>
+          JUC
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/juc/JUC并发编程.html" class="nav-link">
+  JUC并发编程
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Boot
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Cloud
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Security
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Session
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Data
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Batch
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java框架" class="dropdown-title"><span class="title">Java框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Mybatis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          MybatisPlus
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          日志框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          缓存
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          连接池
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ShardingSphere
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式&amp;算法" class="dropdown-title"><span class="title">设计模式&amp;算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/参考资料.html" class="nav-link">
+  参考资料
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/设计模式七大原则.html" class="nav-link">
+  设计模式七大原则
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/UML图.html" class="nav-link">
+  UML图
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/Java设计模式.html" class="nav-link">
+  Java设计模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Oracle
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          MySQL
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Redis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Elasticsearch
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Kafka
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Mongodb
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Tomcat
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          RabbitMQ
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-简介.html" class="nav-link">
+  Docker 简介
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-安装.html" class="nav-link">
+  Docker 安装
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-常用命令.html" class="nav-link">
+  Docker 常用命令
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-镜像.html" class="nav-link">
+  Docker 镜像
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-数据卷.html" class="nav-link">
+  Docker 数据卷
+</a></li></ul></li><li class="dropdown-item"><h4>
+          K8s
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Maven
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Gradle
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Idea
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/idea/插件.html" class="nav-link">
+  插件
+</a></li><li class="dropdown-subitem"><a href="/md/idea/常用设置.html" class="nav-link">
+  常用设置
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="环境部署" class="dropdown-title"><span class="title">环境部署</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          MySQL
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/db/mysql/MySQL-安装.html" class="nav-link">
+  MySQL 安装
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-安装.html" class="nav-link">
+  Docker 安装
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="源码仓库" class="dropdown-title"><span class="title">源码仓库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/YiShanQingF/LearningNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  开源项目 - Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/zhufanjia/LearningNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  开源项目 - Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/md/nav/nav.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  导航
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="读书&amp;笔记" class="dropdown-title"><span class="title">读书&amp;笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/book/Java Multithread Programming/Java多线程编程核心技术（第3版）.html" class="nav-link">
+  Java多线程编程核心技术（第3版）
+</a></li><li class="dropdown-subitem"><a href="/md/book/OnJava中文版基础/第一章.html" class="nav-link">
+  On Java 中文版 基础
+</a></li><li class="dropdown-subitem"><a href="/md/sad/必修2-计算机基础.html" class="nav-link">
+  架构师
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java 基础
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/HelloJava.html" class="nav-link">
+  Hello Java
+</a></li><li class="dropdown-subitem"><a href="/md/java/core/Java-基础-变量.html" class="nav-link">
+  Java 基础
+</a></li><li class="dropdown-subitem"><a href="/md/java/core/Java-基础-面向对象.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>
+          JVM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/jvm/JVM-基础-类字节码详解.html" class="nav-link">
+  JVM 基础
+</a></li><li class="dropdown-subitem"><a href="/md/java/jvm/GC-Java-垃圾回收基础知识.html" class="nav-link">
+  GC
+</a></li></ul></li><li class="dropdown-item"><h4>
+          JUC
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/juc/JUC并发编程.html" class="nav-link">
+  JUC并发编程
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Boot
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Cloud
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Security
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Session
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Data
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Batch
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java框架" class="dropdown-title"><span class="title">Java框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Mybatis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          MybatisPlus
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          日志框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          缓存
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          连接池
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ShardingSphere
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式&amp;算法" class="dropdown-title"><span class="title">设计模式&amp;算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/参考资料.html" class="nav-link">
+  参考资料
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/设计模式七大原则.html" class="nav-link">
+  设计模式七大原则
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/UML图.html" class="nav-link">
+  UML图
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/Java设计模式.html" class="nav-link">
+  Java设计模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Oracle
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          MySQL
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Redis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Elasticsearch
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Kafka
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Mongodb
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Tomcat
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          RabbitMQ
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-简介.html" class="nav-link">
+  Docker 简介
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-安装.html" class="nav-link">
+  Docker 安装
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-常用命令.html" class="nav-link">
+  Docker 常用命令
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-镜像.html" class="nav-link">
+  Docker 镜像
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-数据卷.html" class="nav-link">
+  Docker 数据卷
+</a></li></ul></li><li class="dropdown-item"><h4>
+          K8s
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Maven
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Gradle
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/nav/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Idea
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/idea/插件.html" class="nav-link">
+  插件
+</a></li><li class="dropdown-subitem"><a href="/md/idea/常用设置.html" class="nav-link">
+  常用设置
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="环境部署" class="dropdown-title"><span class="title">环境部署</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          MySQL
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/db/mysql/MySQL-安装.html" class="nav-link">
+  MySQL 安装
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-安装.html" class="nav-link">
+  Docker 安装
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="源码仓库" class="dropdown-title"><span class="title">源码仓库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/YiShanQingF/LearningNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  开源项目 - Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/zhufanjia/LearningNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  开源项目 - Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>资源导航</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/md/nav/nav.html" aria-current="page" class="active sidebar-link">开发百宝箱</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/md/nav/nav.html#优质导航" class="sidebar-link">优质导航</a></li><li class="sidebar-sub-header"><a href="/md/nav/nav.html#优质博客" class="sidebar-link">优质博客</a></li><li class="sidebar-sub-header"><a href="/md/nav/nav.html#项目代码" class="sidebar-link">项目代码</a></li><li class="sidebar-sub-header"><a href="/md/nav/nav.html#技术社区" class="sidebar-link">技术社区</a></li><li class="sidebar-sub-header"><a href="/md/nav/nav.html#基础教程" class="sidebar-link">基础教程</a></li><li class="sidebar-sub-header"><a href="/md/nav/nav.html#后端开发" class="sidebar-link">后端开发</a></li><li class="sidebar-sub-header"><a href="/md/nav/nav.html#前端开发" class="sidebar-link">前端开发</a></li><li class="sidebar-sub-header"><a href="/md/nav/nav.html#算法数据结构" class="sidebar-link">算法数据结构</a></li><li class="sidebar-sub-header"><a href="/md/nav/nav.html#推荐项目" class="sidebar-link">推荐项目</a></li><li class="sidebar-sub-header"><a href="/md/nav/nav.html#电子书" class="sidebar-link">电子书</a></li><li class="sidebar-sub-header"><a href="/md/nav/nav.html#在线工具" class="sidebar-link">在线工具</a></li><li class="sidebar-sub-header"><a href="/md/nav/nav.html#常用软件" class="sidebar-link">常用软件</a></li><li class="sidebar-sub-header"><a href="/md/nav/nav.html#idea" class="sidebar-link">IDEA</a></li></ul></li></ul></section></li></ul> </aside> <div><main class="withouttoc page"> <!----> <div class="theme-default-content content__default"><h1 id="开发百宝箱"><a href="#开发百宝箱" class="header-anchor">#</a> 开发百宝箱</h1> <h2 id="优质导航"><a href="#优质导航" class="header-anchor">#</a>优质导航
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.code-nav.cn/" target="_blank"><div class="my-nav-item"><div title="编程导航" class="cc-nav-title"><img src="/images/nav_logo/code-nav.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">编程导航</div></div> <div title="帮你找到优质的编程学习资源！" class="cc-nav-des">
+                帮你找到优质的编程学习资源！
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.xue8nav.com/" target="_blank"><div class="my-nav-item"><div title="学吧导航" class="cc-nav-title"><img src="/images/nav_logo/xue8nav.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">学吧导航</div></div> <div title="四十万学习爱好者都在用的学霸导航网站" class="cc-nav-des">
+                四十万学习爱好者都在用的学霸导航网站
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://www.cxy521.com/" target="_blank"><div class="my-nav-item"><div title="CXY521" class="cc-nav-title"><img src="/images/nav_logo/cxy521.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">CXY521</div></div> <div title="CXY521是一个致力于一站式程序员学习工作娱乐导航网站" class="cc-nav-des">
+                CXY521是一个致力于一站式程序员学习工作娱乐导航网站
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.tboxn.com/" target="_blank"><div class="my-nav-item"><div title="Tbox导航" class="cc-nav-title"><img src="/images/nav_logo/tboxn.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Tbox导航</div></div> <div title="只收录优质在线工具的导航网站" class="cc-nav-des">
+                只收录优质在线工具的导航网站
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://itab.link/" target="_blank"><div class="my-nav-item"><div title="iTab" class="cc-nav-title"><img src="/images/nav_logo/itab.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">iTab</div></div> <div title="自定义您新标签页上的网站和壁纸以及搜索引擎,创建和编辑属于您自己的浏览器标签页,精美日历、炫酷天气、每日头条、海量壁纸、常用网址随心订制" class="cc-nav-des">
+                自定义您新标签页上的网站和壁纸以及搜索引擎,创建和编辑属于您自己的浏览器标签页,精美日历、炫酷天气、每日头条、海量壁纸、常用网址随心订制
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.iiice.cn/" target="_blank"><div class="my-nav-item"><div title="下次一定" class="cc-nav-title"><img src="/images/nav_logo/iiice.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">下次一定</div></div> <div title="专门为白嫖怪开发的宝藏网站" class="cc-nav-des">
+                专门为白嫖怪开发的宝藏网站
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.zhanlian.net/code" target="_blank"><div class="my-nav-item"><div title="e站联导航" class="cc-nav-title"><img src="/images/nav_logo/zhanlian.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">e站联导航</div></div> <div title="编程导航 程序员的上网主页" class="cc-nav-des">
+                编程导航 程序员的上网主页
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://lkssite.vip/" target="_blank"><div class="my-nav-item"><div title="LKs Site" class="cc-nav-title"><img src="/images/nav_logo/lkssite.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">LKs Site</div></div> <div title="LKs - 良心到难以置信的网站推荐" class="cc-nav-des">
+                LKs - 良心到难以置信的网站推荐
+              </div></div></a></div></div></h2><h2 id="优质博客"><a href="#优质博客" class="header-anchor">#</a>优质博客
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://www.opcoder.cn/" target="_blank"><div class="my-nav-item"><div title="OPCoder" class="cc-nav-title"><img src="/images/nav_logo/opcoder.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">OPCoder</div></div> <div title="OPCoder是一个Django搭建的博客，前端使用Bootstrap框架，主要分享博主在Python以及其他编程语言的学习心得。" class="cc-nav-des">
+                OPCoder是一个Django搭建的博客，前端使用Bootstrap框架，主要分享博主在Python以及其他编程语言的学习心得。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://bugstack.cn/" target="_blank"><div class="my-nav-item"><div title="bugstack 虫洞栈" class="cc-nav-title"><img src="/images/nav_logo/bugstack.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">bugstack 虫洞栈</div></div> <div title="包含: Java 基础，面经手册，Netty4.x，手写Spring，用Java实现JVM，重学Java设计模式，SpringBoot中间件开发，IDEA插件开发，DDD系统架构项目开发，字节码编程..." class="cc-nav-des">
+                包含: Java 基础，面经手册，Netty4.x，手写Spring，用Java实现JVM，重学Java设计模式，SpringBoot中间件开发，IDEA插件开发，DDD系统架构项目开发，字节码编程...
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.pdai.tech/" target="_blank"><div class="my-nav-item"><div title="Java 全栈知识体系" class="cc-nav-title"><img src="/images/nav_logo/pdai.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Java 全栈知识体系</div></div> <div title="包含: Java 基础, Java 部分源码, JVM, Spring, Spring Boot, Spring Cloud, 数据库原理, MySQL, ElasticSearch, MongoDB, Docker, k8s, CI&amp;CD, Linux, DevOps, 分布式, 中间件, 开发工具, Git, IDE, 源码阅读，读书笔记, 开源项目..." class="cc-nav-des">
+                包含: Java 基础, Java 部分源码, JVM, Spring, Spring Boot, Spring Cloud, 数据库原理, MySQL, ElasticSearch, MongoDB, Docker, k8s, CI&amp;CD, Linux, DevOps, 分布式, 中间件, 开发工具, Git, IDE, 源码阅读，读书笔记, 开源项目...
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://r2coding.com/" target="_blank"><div class="my-nav-item"><div title="Road To Coding" class="cc-nav-title"><img src="/images/nav_logo/r2coding.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Road To Coding</div></div> <div title="本站取名为 r2coding，即 Road To Coding，意为编程自学之路，是自学编程以来所用资源和分享内容的大聚合。" class="cc-nav-des">
+                本站取名为 r2coding，即 Road To Coding，意为编程自学之路，是自学编程以来所用资源和分享内容的大聚合。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://javaguide.cn/" target="_blank"><div class="my-nav-item"><div title="JavaGuide" class="cc-nav-title"><img src="/images/nav_logo/javaguide.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">JavaGuide</div></div> <div title="「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。准备 Java 面试，首选 JavaGuide！" class="cc-nav-des">
+                「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。准备 Java 面试，首选 JavaGuide！
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.altitude.xin/blog/home/" target="_blank"><div class="my-nav-item"><div title="赛泰先生" class="cc-nav-title"><img src="/images/nav_logo/altitude.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">赛泰先生</div></div> <div title="赛泰先生 - 博客天地" class="cc-nav-des">
+                赛泰先生 - 博客天地
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.codefather.cn/" target="_blank"><div class="my-nav-item"><div title="鱼皮的编程宝典" class="cc-nav-title"><img src="/images/nav_logo/codefather.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">鱼皮的编程宝典</div></div> <div title="贴心的编程学习路线，全面的编程知识百科" class="cc-nav-des">
+                贴心的编程学习路线，全面的编程知识百科
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://note.moguit.cn/" target="_blank"><div class="my-nav-item"><div title="陌溪的学习笔记" class="cc-nav-title"><img src="/images/nav_logo/moguit.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">陌溪的学习笔记</div></div> <div title="笔记主要涵盖：Java，Spring，SpringCloud，计算机网络，操作系统，数据结构，Vue等" class="cc-nav-des">
+                笔记主要涵盖：Java，Spring，SpringCloud，计算机网络，操作系统，数据结构，Vue等
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://www.cyc2018.xyz/" target="_blank"><div class="my-nav-item"><div title="CyC" class="cc-nav-title"><img src="/images/nav_logo/cyc2018.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">CyC</div></div> <div title="技术面试必备基础知识、Leetcode、计算机操作系统、计算机网络、系统设计" class="cc-nav-des">
+                技术面试必备基础知识、Leetcode、计算机操作系统、计算机网络、系统设计
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.mszlu.com/" target="_blank"><div class="my-nav-item"><div title="码神之路知识体系" class="cc-nav-title"><img src="/images/nav_logo/mszlu.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">码神之路知识体系</div></div> <div title="Java和Go的全系列教程资料" class="cc-nav-des">
+                Java和Go的全系列教程资料
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://jwt1399.top/" target="_blank"><div class="my-nav-item"><div title="简言之" class="cc-nav-title"><img src="/images/nav_logo/jwt1399.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">简言之</div></div> <div title="慢慢来，比较快！" class="cc-nav-des">
+                慢慢来，比较快！
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://waylau.com/" target="_blank"><div class="my-nav-item"><div title="老卫的博客" class="cc-nav-title"><img src="/images/nav_logo/waylau.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">老卫的博客</div></div> <div title="关注编程、系统架构、性能优化" class="cc-nav-des">
+                关注编程、系统架构、性能优化
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://javajgs.com/" target="_blank"><div class="my-nav-item"><div title="架构师必看" class="cc-nav-title"><img src="/images/nav_logo/javajgs.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">架构师必看</div></div> <div title="Java架构师必看致力于分享优质文章教程【java程序员从初级到中级进阶高级架构师黑马】;搜集全网高质量学习书籍面试题视频项目;让您系统提升java架构技术,免培训工资翻倍。" class="cc-nav-des">
+                Java架构师必看致力于分享优质文章教程【java程序员从初级到中级进阶高级架构师黑马】;搜集全网高质量学习书籍面试题视频项目;让您系统提升java架构技术,免培训工资翻倍。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.javacn.site/" target="_blank"><div class="my-nav-item"><div title="Javaᶜⁿ 面试突击" class="cc-nav-title"><img src="/images/nav_logo/javacn.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Javaᶜⁿ 面试突击</div></div> <div title="一站式刷题网站，找工作不孤单~" class="cc-nav-des">
+                一站式刷题网站，找工作不孤单~
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://interviewguide.cn/" target="_blank"><div class="my-nav-item"><div title="阿秀的学习笔记" class="cc-nav-title"><img src="/images/nav_logo/interviewguide.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">阿秀的学习笔记</div></div> <div title="懂了，马上开卷 →" class="cc-nav-des">
+                懂了，马上开卷 →
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://arcstack.top/" target="_blank"><div class="my-nav-item"><div title="顶尖架构师栈" class="cc-nav-title"><img src="/images/nav_logo/arcstack.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">顶尖架构师栈</div></div> <div title="顶尖架构师栈" class="cc-nav-des">
+                顶尖架构师栈
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://topjavaer.cn/" target="_blank"><div class="my-nav-item"><div title="程序员大彬" class="cc-nav-title"><img src="/images/nav_logo/topjavaer.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">程序员大彬</div></div> <div title="优质的编程学习网站" class="cc-nav-des">
+                优质的编程学习网站
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.javaself.cn/" target="_blank"><div class="my-nav-item"><div title="Java个体户" class="cc-nav-title"><img src="/images/nav_logo/icon/java-2.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Java个体户</div></div> <div title="Java个体户" class="cc-nav-des">
+                Java个体户
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://lixx.cn/" target="_blank"><div class="my-nav-item"><div title="Lixx Blog-李晓旭的博客" class="cc-nav-title"><img src="/images/nav_logo/Lixx_Blog.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Lixx Blog-李晓旭的博客</div></div> <div title="Lixx Blog-李晓旭的博客" class="cc-nav-des">
+                Lixx Blog-李晓旭的博客
+              </div></div></a></div></div></h2><h2 id="项目代码"><a href="#项目代码" class="header-anchor">#</a>项目代码
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://github.com/fuzhengwei/CodeGuide" target="_blank"><div class="my-nav-item"><div title="CodeGuide | 程序员编码指南" class="cc-nav-title"><img src="/images/nav_logo/CodeGuide.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">CodeGuide | 程序员编码指南</div></div> <div title="小傅哥 bugstack虫洞栈 文章所涉及到的全部开源代码" class="cc-nav-des">
+                小傅哥 bugstack虫洞栈 文章所涉及到的全部开源代码
+              </div></div></a></div></div></h2><h2 id="技术社区"><a href="#技术社区" class="header-anchor">#</a>技术社区
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://www.csdn.net/" target="_blank"><div class="my-nav-item"><div title="CDSN" class="cc-nav-title"><img src="/images/nav_logo/csdn.gif" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">CDSN</div></div> <div title="中国专业IT社区CSDN" class="cc-nav-des">
+                中国专业IT社区CSDN
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://www.cnblogs.com/" target="_blank"><div class="my-nav-item"><div title="博客园" class="cc-nav-title"><img src="/images/nav_logo/cnblog.gif" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">博客园</div></div> <div title="开发者的网上家园" class="cc-nav-des">
+                开发者的网上家园
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.oschina.net" target="_blank"><div class="my-nav-item"><div title="OSChina" class="cc-nav-title"><img src="/images/nav_logo/oschina.gif" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">OSChina</div></div> <div title="中国最大的开源技术社区" class="cc-nav-des">
+                中国最大的开源技术社区
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://segmentfault.com/" target="_blank"><div class="my-nav-item"><div title="思否" class="cc-nav-title"><img src="/images/nav_logo/segmentfault.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">思否</div></div> <div title="中国领先的开发者技术社区" class="cc-nav-des">
+                中国领先的开发者技术社区
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://juejin.im" target="_blank"><div class="my-nav-item"><div title="掘金" class="cc-nav-title"><img src="/images/nav_logo/juejin.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">掘金</div></div> <div title="掘金是一个帮助开发者成长的社区，是一个面向互联网技术人的内容分享平台" class="cc-nav-des">
+                掘金是一个帮助开发者成长的社区，是一个面向互联网技术人的内容分享平台
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.linuxidc.com/" target="_blank"><div class="my-nav-item"><div title="Linux公社" class="cc-nav-title"><img src="/images/nav_logo/linuxidc.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Linux公社</div></div> <div title="Linux系统门户网站" class="cc-nav-des">
+                Linux系统门户网站
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.51cto.com/" target="_blank"><div class="my-nav-item"><div title="51CTO" class="cc-nav-title"><img src="/images/nav_logo/51cto.gif" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">51CTO</div></div> <div title="中国领先的IT技术网站" class="cc-nav-des">
+                中国领先的IT技术网站
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.ibm.com/developerworks/cn/" target="_blank"><div class="my-nav-item"><div title="IBM 开发者" class="cc-nav-title"><img src="/images/nav_logo/ibm.jpeg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IBM 开发者</div></div> <div title="IBM开发者社区" class="cc-nav-des">
+                IBM开发者社区
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://stackoverflow.com" target="_blank"><div class="my-nav-item"><div title="StackOverflow" class="cc-nav-title"><img src="/images/nav_logo/stackoverflow.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">StackOverflow</div></div> <div title="Stack Overflow是一个与程序相关的IT技术问答网站" class="cc-nav-des">
+                Stack Overflow是一个与程序相关的IT技术问答网站
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.nowcoder.com/" target="_blank"><div class="my-nav-item"><div title="牛客网" class="cc-nav-title"><img src="/images/nav_logo/nowcoder.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">牛客网</div></div> <div title="海量题库、多样竞赛、求职交流" class="cc-nav-des">
+                海量题库、多样竞赛、求职交流
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://leetcode.cn/" target="_blank"><div class="my-nav-item"><div title="力扣" class="cc-nav-title"><img src="/images/nav_logo/leetcode.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">力扣</div></div> <div title="算法题库" class="cc-nav-des">
+                算法题库
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.lintcode.com/" target="_blank"><div class="my-nav-item"><div title="炼码" class="cc-nav-title"><img src="/images/nav_logo/lintcode.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">炼码</div></div> <div title="必刷题集与企业真题" class="cc-nav-des">
+                必刷题集与企业真题
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://hihocoder.com/" target="_blank"><div class="my-nav-item"><div title="hihocoder" class="cc-nav-title"><img src="/images/nav_logo/hihocoder.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">hihocoder</div></div> <div title="程序设计比赛提升编程水平" class="cc-nav-des">
+                程序设计比赛提升编程水平
+              </div></div></a></div></div></h2><h2 id="基础教程"><a href="#基础教程" class="header-anchor">#</a>基础教程
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://quickref.cn/" target="_blank"><div class="my-nav-item"><div title="Quick Reference" class="cc-nav-title"><img src="/images/nav_logo/quickref.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Quick Reference</div></div> <div title="为开发人员分享快速参考备忘清单【速查表】" class="cc-nav-des">
+                为开发人员分享快速参考备忘清单【速查表】
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://tool.oschina.net/apidocs" target="_blank"><div class="my-nav-item"><div title="在线API文档" class="cc-nav-title"><img src="/images/nav_logo/oschina.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">在线API文档</div></div> <div title="OSCHINA.NET在线工具,ostools为开发设计人员提供在线工具，提供jsbin在线 CSS、JS 调试，在线 Java API文档,在线 PHP API文档,在线 Node.js API文档,Less CSS编译器，MarkDown编译器等其他在线工具" class="cc-nav-des">
+                OSCHINA.NET在线工具,ostools为开发设计人员提供在线工具，提供jsbin在线 CSS、JS 调试，在线 Java API文档,在线 PHP API文档,在线 Node.js API文档,Less CSS编译器，MarkDown编译器等其他在线工具
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.w3cschool.cn/tutorial" target="_blank"><div class="my-nav-item"><div title="W3Cschool词典库" class="cc-nav-title"><img src="/images/nav_logo/w3cschool.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">W3Cschool词典库</div></div> <div title="W3Cschool词典大全，汇集海量技术词典、编程词典等知识帮助开发者更快更精准获取需要的内容" class="cc-nav-des">
+                W3Cschool词典大全，汇集海量技术词典、编程词典等知识帮助开发者更快更精准获取需要的内容
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://how2j.cn/" target="_blank"><div class="my-nav-item"><div title="How2J 的 Java教程" class="cc-nav-title"><img src="/images/nav_logo/how2j.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">How2J 的 Java教程</div></div> <div title="How2J的Java教程, 内容涵盖J2SE、WEB前端、J2EE、框架技术等全面的Java内容。 基于实例代码和视频讲解的学习方式为Java职业生涯打下坚实的基础" class="cc-nav-des">
+                How2J的Java教程, 内容涵盖J2SE、WEB前端、J2EE、框架技术等全面的Java内容。 基于实例代码和视频讲解的学习方式为Java职业生涯打下坚实的基础
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.w3school.com.cn/" target="_blank"><div class="my-nav-item"><div title="w3school 在线教程" class="cc-nav-title"><img src="/images/nav_logo/w3school.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">w3school 在线教程</div></div> <div title="全球最大的中文 Web 技术教程。" class="cc-nav-des">
+                全球最大的中文 Web 技术教程。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://docs.apachecn.org/" target="_blank"><div class="my-nav-item"><div title="iBooker 布客" class="cc-nav-title"><img src="/images/nav_logo/iBooker.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">iBooker 布客</div></div> <div title="文档社区-可以允许不完美，但不能不做 ｜ ApacheCN" class="cc-nav-des">
+                文档社区-可以允许不完美，但不能不做 ｜ ApacheCN
+              </div></div></a></div></div></h2><h2 id="后端开发"><a href="#后端开发" class="header-anchor">#</a>后端开发
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.yuque.com/qingkongxiaguang/javase" target="_blank"><div class="my-nav-item"><div title="JavaSE系列 笔记" class="cc-nav-title"><img src="/images/nav_logo/qingkongxiaguang.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">JavaSE系列 笔记</div></div> <div title="这是来自一个没有团队，没有机构，仅仅是一个热爱Java开发的带学生UP主完成的学习路线，所有的资料、源码可以直接下载。" class="cc-nav-des">
+                这是来自一个没有团队，没有机构，仅仅是一个热爱Java开发的带学生UP主完成的学习路线，所有的资料、源码可以直接下载。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.idannywu.com/apidoc/" target="_blank"><div class="my-nav-item"><div title="Java API" class="cc-nav-title"><img src="/images/nav_logo/java.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Java API</div></div> <div title="Java™ Platform, Standard Edition 8 API Specification" class="cc-nav-des">
+                Java™ Platform, Standard Edition 8 API Specification
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://uprogrammer.cn/" target="_blank"><div class="my-nav-item"><div title="优程" class="cc-nav-title"><img src="/images/nav_logo/uprogrammer.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">优程</div></div> <div title="优程，成为优秀程序员必备的优秀教程" class="cc-nav-des">
+                优程，成为优秀程序员必备的优秀教程
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.springcloud.cc/" target="_blank"><div class="my-nav-item"><div title="Spring Cloud 中文网" class="cc-nav-title"><img src="/images/nav_logo/spring-1.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Spring Cloud 中文网</div></div> <div title="Spring Cloud集成相关优质项目推荐" class="cc-nav-des">
+                Spring Cloud集成相关优质项目推荐
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://springcloud.fun/" target="_blank"><div class="my-nav-item"><div title="Spring Cloud 中文索引" class="cc-nav-title"><img src="/images/nav_logo/spring-1.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Spring Cloud 中文索引</div></div> <div title="Spring Cloud集成相关优质项目推荐" class="cc-nav-des">
+                Spring Cloud集成相关优质项目推荐
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://springboot.fun/" target="_blank"><div class="my-nav-item"><div title="Spring Boot 中文索引" class="cc-nav-title"><img src="/images/nav_logo/spring-1.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Spring Boot 中文索引</div></div> <div title="Spring Boot 中文社区资源链接导航，开源代码，博客，工具等" class="cc-nav-des">
+                Spring Boot 中文社区资源链接导航，开源代码，博客，工具等
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://snailclimb.gitee.io/springboot-guide/#/" target="_blank"><div class="my-nav-item"><div title="SpringBootGuide" class="cc-nav-title"><img src="/images/nav_logo/spring-boot-guide.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">SpringBootGuide</div></div> <div title="Spring Boot 学习/面试指南" class="cc-nav-des">
+                Spring Boot 学习/面试指南
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://hutool.cn/docs/#/" target="_blank"><div class="my-nav-item"><div title="Hutool" class="cc-nav-title"><img src="/images/nav_logo/Hutool.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Hutool</div></div> <div title="Hutool谐音“糊涂”，一方面简洁易懂，一方面寓意“难得糊涂”。" class="cc-nav-des">
+                Hutool谐音“糊涂”，一方面简洁易懂，一方面寓意“难得糊涂”。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://mybatis.org/mybatis-3/zh/index.html" target="_blank"><div class="my-nav-item"><div title="MyBatis" class="cc-nav-title"><img src="/images/nav_logo/mybatis-logo.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">MyBatis</div></div> <div title="MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。" class="cc-nav-des">
+                MyBatis 是一款优秀的持久层框架，它支持自定义 SQL、存储过程以及高级映射。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://baomidou.com/" target="_blank"><div class="my-nav-item"><div title="MyBatis-Plus" class="cc-nav-title"><img src="/images/nav_logo/MyBatis-Plus.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">MyBatis-Plus</div></div> <div title="为简化开发而生" class="cc-nav-des">
+                为简化开发而生
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://118.24.53.162/#/" target="_blank"><div class="my-nav-item"><div title="MyBatisCodeHelper-Pro" class="cc-nav-title"><img src="/images/nav_logo/MyBatisCodeHelperPro.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">MyBatisCodeHelper-Pro</div></div> <div title="IntelliJ IDEA Plugins" class="cc-nav-des">
+                IntelliJ IDEA Plugins
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.linuxcool.com/" target="_blank"><div class="my-nav-item"><div title="Linux命令大全(手册)" class="cc-nav-title"><img src="/images/nav_logo/linuxcool.webp" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Linux命令大全(手册)</div></div> <div title="Linux命令大全(手册) – 真正好用的Linux命令在线查询网站" class="cc-nav-des">
+                Linux命令大全(手册) – 真正好用的Linux命令在线查询网站
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://wangchujiang.com/linux-command/" target="_blank"><div class="my-nav-item"><div title="Linux命令搜索引擎" class="cc-nav-title"><img src="/images/nav_logo/Linux.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Linux命令搜索引擎</div></div> <div title="Linux命令搜索引擎:最专业的Linux命令大全，内容包含Linux命令手册、详解、学习，值得收藏的Linux命令速查手册。 - 最专业的Linux命令大全，内容包含Linux命令手册、详解、学习，值得收藏的Linux命令速查手册。" class="cc-nav-des">
+                Linux命令搜索引擎:最专业的Linux命令大全，内容包含Linux命令手册、详解、学习，值得收藏的Linux命令速查手册。 - 最专业的Linux命令大全，内容包含Linux命令手册、详解、学习，值得收藏的Linux命令速查手册。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://deerchao.cn/" target="_blank"><div class="my-nav-item"><div title="正则教程" class="cc-nav-title"><img src="/images/nav_logo/deerchao.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">正则教程</div></div> <div title="正则教程" class="cc-nav-des">
+                正则教程
+              </div></div></a></div></div></h2><h2 id="前端开发"><a href="#前端开发" class="header-anchor">#</a>前端开发
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://element-plus.gitee.io/zh-CN/component/button.html" target="_blank"><div class="my-nav-item"><div title="Element Plus" class="cc-nav-title"><img src="/images/nav_logo/element-plus-logo.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Element Plus</div></div> <div title="基于 Vue 3，面向设计师和开发者的组件库" class="cc-nav-des">
+                基于 Vue 3，面向设计师和开发者的组件库
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://element.eleme.cn/#/zh-CN/component/installation" target="_blank"><div class="my-nav-item"><div title="Element" class="cc-nav-title"><img src="/images/nav_logo/element.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Element</div></div> <div title="Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库" class="cc-nav-des">
+                Element，一套为开发者、设计师和产品经理准备的基于 Vue 2.0 的桌面端组件库
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://jquery.cuishifeng.cn/" target="_blank"><div class="my-nav-item"><div title="jQuery API" class="cc-nav-title"><img src="/images/nav_logo/jQuery.gif" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">jQuery API</div></div> <div title="jQuery API 速查表" class="cc-nav-des">
+                jQuery API 速查表
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.jquery123.com/" target="_blank"><div class="my-nav-item"><div title="jQuery API 中文文档" class="cc-nav-title"><img src="/images/nav_logo/jquery123.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">jQuery API 中文文档</div></div> <div title="jQuery：用更少的代码完成更多工作！jQuery 是一个最流行的 JavaScript 工具库。" class="cc-nav-des">
+                jQuery：用更少的代码完成更多工作！jQuery 是一个最流行的 JavaScript 工具库。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.bootcss.com/" target="_blank"><div class="my-nav-item"><div title="Bootstrap" class="cc-nav-title"><img src="/images/nav_logo/Bootstrap.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Bootstrap</div></div> <div title="简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。" class="cc-nav-des">
+                简洁、直观、强悍的前端开发框架，让web开发更迅速、简单。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://layui.gitee.io/v2/" target="_blank"><div class="my-nav-item"><div title="layui" class="cc-nav-title"><img src="/images/nav_logo/Layui.webp" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">layui</div></div> <div title="基于浏览器端原生态模式，面向全层次的前后端开发者，易上手且开源免费的 Web 界面组件库" class="cc-nav-des">
+                基于浏览器端原生态模式，面向全层次的前后端开发者，易上手且开源免费的 Web 界面组件库
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.phpin.net/tools/plupload/" target="_blank"><div class="my-nav-item"><div title="Plupload" class="cc-nav-title"><img src="/images/nav_logo/plupload.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Plupload</div></div> <div title="Plupload上传插件中文帮助文档" class="cc-nav-des">
+                Plupload上传插件中文帮助文档
+              </div></div></a></div></div></h2><h2 id="算法数据结构"><a href="#算法数据结构" class="header-anchor">#</a>算法数据结构
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://visualgo.net/zh" target="_blank"><div class="my-nav-item"><div title="VisuAlgo" class="cc-nav-title"><img src="/images/nav_logo/visualgo.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">VisuAlgo</div></div> <div title="VisuAlgo 数据结构和算法动态可视化" class="cc-nav-des">
+                VisuAlgo 数据结构和算法动态可视化
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://blog.algomooc.com/" target="_blank"><div class="my-nav-item"><div title="吴师兄学算法" class="cc-nav-title"><img src="/images/nav_logo/algomooc.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">吴师兄学算法</div></div> <div title="看动画，拿 Offer" class="cc-nav-des">
+                看动画，拿 Offer
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.hello-algo.com/" target="_blank"><div class="my-nav-item"><div title="Hello 算法" class="cc-nav-title"><img src="/images/nav_logo/hello-algo.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Hello 算法</div></div> <div title="动画图解、一键运行的数据结构与算法教程" class="cc-nav-des">
+                动画图解、一键运行的数据结构与算法教程
+              </div></div></a></div></div></h2><h2 id="推荐项目"><a href="#推荐项目" class="header-anchor">#</a>推荐项目
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://ruoyi.vip/" target="_blank"><div class="my-nav-item"><div title="若依" class="cc-nav-title"><img src="/images/nav_logo/ruoyi.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">若依</div></div> <div title="使用若依快速构建web应用程序" class="cc-nav-des">
+                使用若依快速构建web应用程序
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://jeesite.com/" target="_blank"><div class="my-nav-item"><div title="JeeSite" class="cc-nav-title"><img src="/images/nav_logo/jeesite.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">JeeSite</div></div> <div title="Java 快速开发平台，不仅仅是一个后台开发框架，它是一个企业级快速开发解决方案，采用经典开发模式，提供 Spring Boot 在线代码生成功能。" class="cc-nav-des">
+                Java 快速开发平台，不仅仅是一个后台开发框架，它是一个企业级快速开发解决方案，采用经典开发模式，提供 Spring Boot 在线代码生成功能。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.xuxueli.com/xxl-job/" target="_blank"><div class="my-nav-item"><div title="xxl-job" class="cc-nav-title"><img src="/images/nav_logo/xuxueli.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">xxl-job</div></div> <div title="分布式任务调度平台" class="cc-nav-des">
+                分布式任务调度平台
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://www.jeecg.com/" target="_blank"><div class="my-nav-item"><div title="JeecgBoot" class="cc-nav-title"><img src="/images/nav_logo/jeecg.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">JeecgBoot</div></div> <div title="JeecgBoot是一款基于BPM的低代码平台！前后端分离架构 SpringBoot 2.x，SpringCloud，Ant Design&amp;Vue，Mybatis-plus，Shiro，JWT，支持微服务。" class="cc-nav-des">
+                JeecgBoot是一款基于BPM的低代码平台！前后端分离架构 SpringBoot 2.x，SpringCloud，Ant Design&amp;Vue，Mybatis-plus，Shiro，JWT，支持微服务。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.jeequan.com/" target="_blank"><div class="my-nav-item"><div title="jeepay" class="cc-nav-title"><img src="/images/nav_logo/jeepay.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">jeepay</div></div> <div title="Jeepay是一套适合互联网企业使用的开源支付系统，已实现交易、退款、转账、分账等接口，支持服务商特约商户和普通商户接口。已对接微信，支付宝，云闪付官方接口，支持聚合码支付。" class="cc-nav-des">
+                Jeepay是一套适合互联网企业使用的开源支付系统，已实现交易、退款、转账、分账等接口，支持服务商特约商户和普通商户接口。已对接微信，支付宝，云闪付官方接口，支持聚合码支付。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://gitee.com/geek_qi/cloud-platform" target="_blank"><div class="my-nav-item"><div title="Cloud-Platform" class="cc-nav-title"><img src="/images/nav_logo/Cloud-Platform.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Cloud-Platform</div></div> <div title="国内首个Spring Cloud微服务化RBAC的管理平台，核心采用Spring Boot 2.4、Spring Cloud 2020.0.0 &amp; Alibaba，前端采用d2-admin中台框架。" class="cc-nav-des">
+                国内首个Spring Cloud微服务化RBAC的管理平台，核心采用Spring Boot 2.4、Spring Cloud 2020.0.0 &amp; Alibaba，前端采用d2-admin中台框架。
+              </div></div></a></div></div></h2><h2 id="电子书"><a href="#电子书" class="header-anchor">#</a>电子书
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://zh.z-library.se/" target="_blank"><div class="my-nav-item"><div title="z-library" class="cc-nav-title"><img src="/images/nav_logo/z-library.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">z-library</div></div> <div title="您通往知识和文化的门户。 每个人都可以使用。" class="cc-nav-des">
+                您通往知识和文化的门户。 每个人都可以使用。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.shuxiangjia.cn/" target="_blank"><div class="my-nav-item"><div title="书享家" class="cc-nav-title"><img src="/images/nav_logo/shuxiangjia.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">书享家</div></div> <div title="分享读书之美" class="cc-nav-des">
+                分享读书之美
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://github.com/waylau/books-collection" target="_blank"><div class="my-nav-item"><div title="免费图书集合" class="cc-nav-title"><img src="/images/nav_logo/waylau.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">免费图书集合</div></div> <div title="books-collection 给程序员的开源、免费图书集合" class="cc-nav-des">
+                books-collection 给程序员的开源、免费图书集合
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://github.com/forthespada/CS-Books" target="_blank"><div class="my-nav-item"><div title="CS-Books" class="cc-nav-title"><img src="/images/nav_logo/CS-Books.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">CS-Books</div></div> <div title="超过1000本的计算机经典书籍分享" class="cc-nav-des">
+                超过1000本的计算机经典书籍分享
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://github.com/xiaolincoder/CS-Base" target="_blank"><div class="my-nav-item"><div title="图解计算机基础" class="cc-nav-title"><img src="/images/nav_logo/xiaolincoder.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">图解计算机基础</div></div> <div title="小林 x 图解计算机基础" class="cc-nav-des">
+                小林 x 图解计算机基础
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://fire100.top/" target="_blank"><div class="my-nav-item"><div title="书火" class="cc-nav-title"><img src="/images/nav_logo/fire100.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">书火</div></div> <div title="书火-FireBook | 一个免费程序员编程资源分享网站" class="cc-nav-des">
+                书火-FireBook | 一个免费程序员编程资源分享网站
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://git.oschina.net/progit/" target="_blank"><div class="my-nav-item"><div title="Pro Git（中文版）" class="cc-nav-title"><img src="/images/nav_logo/git.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Pro Git（中文版）</div></div> <div title="Pro Git（中文版）" class="cc-nav-des">
+                Pro Git（中文版）
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://books.halfrost.com/leetcode/" target="_blank"><div class="my-nav-item"><div title="LeetCode" class="cc-nav-title"><img src="/images/nav_logo/leetcode.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">LeetCode</div></div> <div title="LeetCode 题解" class="cc-nav-des">
+                LeetCode 题解
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.kancloud.cn/hanxt/springboot2/1492077" target="_blank"><div class="my-nav-item"><div title="Spring Boot2 文档" class="cc-nav-title"><img src="/images/nav_logo/zimug.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Spring Boot2 文档</div></div> <div title="手摸手教你学spring boot 2.x" class="cc-nav-des">
+                手摸手教你学spring boot 2.x
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://leonli0102.github.io/spring-in-action-v6/" target="_blank"><div class="my-nav-item"><div title="Spring 实战(第6版)MEAP" class="cc-nav-title"><img src="/images/nav_logo/spring-in-action-v6.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Spring 实战(第6版)MEAP</div></div> <div title="Spring 实战（第 6 版）预计将于 2022 年 2 月出版。现在的翻译基于 Manning 出版社的 MEAP 版本。" class="cc-nav-des">
+                Spring 实战（第 6 版）预计将于 2022 年 2 月出版。现在的翻译基于 Manning 出版社的 MEAP 版本。
+              </div></div></a></div></div></h2><h2 id="在线工具"><a href="#在线工具" class="header-anchor">#</a>在线工具
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.coderead.cn/home/index.html" target="_blank"><div class="my-nav-item"><div title="源码阅读网" class="cc-nav-title"><img src="/images/nav_logo/coderead.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">源码阅读网</div></div> <div title="让源码变得更简单" class="cc-nav-des">
+                让源码变得更简单
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://naotu.baidu.com/home" target="_blank"><div class="my-nav-item"><div title="百度脑图" class="cc-nav-title"><img src="/images/nav_logo/naotu.baidu.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">百度脑图</div></div> <div title="百度脑图，便捷的脑图编辑工具。让您在线上直接创建、保存并分享你的思路。" class="cc-nav-des">
+                百度脑图，便捷的脑图编辑工具。让您在线上直接创建、保存并分享你的思路。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://boardmix.cn/app/home" target="_blank"><div class="my-nav-item"><div title="boardmix博思白板" class="cc-nav-title"><img src="/images/nav_logo/boardmix.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">boardmix博思白板</div></div> <div title="在boardmix，搭建你自己的工作流" class="cc-nav-des">
+                在boardmix，搭建你自己的工作流
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.processon.com/" target="_blank"><div class="my-nav-item"><div title="Process On" class="cc-nav-title"><img src="/images/nav_logo/processon.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Process On</div></div> <div title="免费在线流程图思维导图" class="cc-nav-des">
+                免费在线流程图思维导图
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://cowtransfer.com/" target="_blank"><div class="my-nav-item"><div title="奶牛快传" class="cc-nav-title"><img src="/images/nav_logo/cowtransfer.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">奶牛快传</div></div> <div title="奶牛快传, cowtransfer, 快传,互传,网盘, 不限速,文件下载,视频下载,云存储,网盘下载,网盘资源,wetransfer,musetransfer,文件上传, 视频上传, 上传工具,安全快速发送文件" class="cc-nav-des">
+                奶牛快传, cowtransfer, 快传,互传,网盘, 不限速,文件下载,视频下载,云存储,网盘下载,网盘资源,wetransfer,musetransfer,文件上传, 视频上传, 上传工具,安全快速发送文件
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://airportal.cn/" target="_blank"><div class="my-nav-item"><div title="AirPortal" class="cc-nav-title"><img src="/images/nav_logo/airportal.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">AirPortal</div></div> <div title="AirPortal（空投快传）是一个可以跨设备传输文件的网站。只要您的设备联网，您就可以通过它在任意系统、任意设备间传输文件。" class="cc-nav-des">
+                AirPortal（空投快传）是一个可以跨设备传输文件的网站。只要您的设备联网，您就可以通过它在任意系统、任意设备间传输文件。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://sql.yupi.icu/" target="_blank"><div class="my-nav-item"><div title="结构化 SQL 生成器" class="cc-nav-title"><img src="/images/nav_logo/yupi.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">结构化 SQL 生成器</div></div> <div title="用 JSON 来生成结构化的 SQL 语句，基于 Vue3 + TypeScript + Vite + Ant Design + MonacoEditor 实现，项目简单（重逻辑轻页面）、适合练手~" class="cc-nav-des">
+                用 JSON 来生成结构化的 SQL 语句，基于 Vue3 + TypeScript + Vite + Ant Design + MonacoEditor 实现，项目简单（重逻辑轻页面）、适合练手~
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://www.itmind.net/" target="_blank"><div class="my-nav-item"><div title="小白学堂" class="cc-nav-title"><img src="/images/nav_logo/itmind.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">小白学堂</div></div> <div title="小白学堂-插件  资源 Idea 破解码 激活码 idea激活码  程序员" class="cc-nav-des">
+                小白学堂-插件  资源 Idea 破解码 激活码 idea激活码  程序员
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.iconfont.cn/" target="_blank"><div class="my-nav-item"><div title="iconfont" class="cc-nav-title"><img src="/images/nav_logo/iconfont.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">iconfont</div></div> <div title="iconfont-阿里巴巴矢量图标库" class="cc-nav-des">
+                iconfont-阿里巴巴矢量图标库
+              </div></div></a></div></div></h2><h2 id="常用软件"><a href="#常用软件" class="header-anchor">#</a>常用软件
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://kdocs.cn/l/cqurpf5yfszw" target="_blank"><div class="my-nav-item"><div title="装机软件列表" class="cc-nav-title"><img src="/images/nav_logo/wps/et-60.et-60.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">装机软件列表</div></div> <div title="个人常用以及收集软件记录" class="cc-nav-des">
+                个人常用以及收集软件记录
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://github.com/docmirror/dev-sidecar" target="_blank"><div class="my-nav-item"><div title="dev-sidecar" class="cc-nav-title"><img src="/images/nav_logo/dev-sidecar.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">dev-sidecar</div></div> <div title="开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速" class="cc-nav-des">
+                开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://github.com/oldj/SwitchHosts" target="_blank"><div class="my-nav-item"><div title="SwitchHosts" class="cc-nav-title"><img src="/images/nav_logo/SwitchHosts.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">SwitchHosts</div></div> <div title="SwitchHosts 是一个管理 hosts 文件的应用" class="cc-nav-des">
+                SwitchHosts 是一个管理 hosts 文件的应用
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.jetbrains.com.cn/idea/" target="_blank"><div class="my-nav-item"><div title="IntelliJ IDEA" class="cc-nav-title"><img src="/images/nav_logo/IntelliJ IDEA.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IntelliJ IDEA</div></div> <div title="领先的 Java 和 Kotlin IDE，使开发更高效、更愉快的 IDE" class="cc-nav-des">
+                领先的 Java 和 Kotlin IDE，使开发更高效、更愉快的 IDE
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://quick123.net/" target="_blank"><div class="my-nav-item"><div title="QuickRedis" class="cc-nav-title"><img src="/images/nav_logo/quick_redis.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">QuickRedis</div></div> <div title="QuickRedis 是一款 永久免费 的 Redis 可视化管理工具。它支持直连、哨兵、集群模式，支持亿万数量级的 key。QuickRedis 支持 Windows 、 Mac OS X 和 Linux 下运行。" class="cc-nav-des">
+                QuickRedis 是一款 永久免费 的 Redis 可视化管理工具。它支持直连、哨兵、集群模式，支持亿万数量级的 key。QuickRedis 支持 Windows 、 Mac OS X 和 Linux 下运行。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.allroundautomations.com/products/pl-sql-developer/" target="_blank"><div class="my-nav-item"><div title="PL/SQL DEVELOPER" class="cc-nav-title"><img src="/images/nav_logo/plsqldev-13.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">PL/SQL DEVELOPER</div></div> <div title="Save time and money on your PL/SQL Development" class="cc-nav-des">
+                Save time and money on your PL/SQL Development
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://www.pdman.cn/" target="_blank"><div class="my-nav-item"><div title="PDMan" class="cc-nav-title"><img src="/images/nav_logo/pdman.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">PDMan</div></div> <div title="数据库建模过程精细提炼，化繁为简，省去不必要的操作，只留下最需要的" class="cc-nav-des">
+                数据库建模过程精细提炼，化繁为简，省去不必要的操作，只留下最需要的
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.ej-technologies.com/" target="_blank"><div class="my-nav-item"><div title="jprofiler" class="cc-nav-title"><img src="/images/nav_logo/jprofiler.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">jprofiler</div></div> <div title="JProfiler intuitive UI helps you resolve performance bottlenecks,pin down memory leaks and understand threading issues." class="cc-nav-des">
+                JProfiler intuitive UI helps you resolve performance bottlenecks,pin down memory leaks and understand threading issues.
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.sumatrapdfreader.org/free-pdf-reader" target="_blank"><div class="my-nav-item"><div title="SumatraPDF" class="cc-nav-title"><img src="/images/nav_logo/sumatrapdfreader.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">SumatraPDF</div></div> <div title="PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for Windows. Small, fast, customizable, free." class="cc-nav-des">
+                PDF, eBook (epub, mobi), comic book (cbz/cbr), DjVu, XPS, CHM, image viewer for Windows. Small, fast, customizable, free.
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.voidtools.com/zh-cn/" target="_blank"><div class="my-nav-item"><div title="Everything" class="cc-nav-title"><img src="/images/nav_logo/Everything.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Everything</div></div> <div title="基于名称快速定位文件和文件夹。" class="cc-nav-des">
+                基于名称快速定位文件和文件夹。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://esearch-app.netlify.app/" target="_blank"><div class="my-nav-item"><div title="eSearch" class="cc-nav-title"><img src="/images/nav_logo/esearch.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">eSearch</div></div> <div title="识屏 · 搜索" class="cc-nav-des">
+                识屏 · 搜索
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://zh.snipaste.com/" target="_blank"><div class="my-nav-item"><div title="Snipaste" class="cc-nav-title"><img src="/images/nav_logo/snipaste.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Snipaste</div></div> <div title="Snipaste 是一个简单但强大的截图工具，也可以让你将截图贴回到屏幕上！" class="cc-nav-des">
+                Snipaste 是一个简单但强大的截图工具，也可以让你将截图贴回到屏幕上！
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://obsproject.com/" target="_blank"><div class="my-nav-item"><div title="OBS" class="cc-nav-title"><img src="/images/nav_logo/obs.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">OBS</div></div> <div title="OBS Studio - Free and open source software for live streaming and screen recording" class="cc-nav-des">
+                OBS Studio - Free and open source software for live streaming and screen recording
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://www.sublimetext.com/" target="_blank"><div class="my-nav-item"><div title="Sublime Text" class="cc-nav-title"><img src="/images/nav_logo/sublime_text.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Sublime Text</div></div> <div title="Text Editing, Done Right" class="cc-nav-des">
+                Text Editing, Done Right
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://www.haoxg.net/" target="_blank"><div class="my-nav-item"><div title="eDiary" class="cc-nav-title"><img src="/images/nav_logo/eDiary.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">eDiary</div></div> <div title="电子日记本的老窝。" class="cc-nav-des">
+                电子日记本的老窝。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://logseq.com/" target="_blank"><div class="my-nav-item"><div title="Logseq" class="cc-nav-title"><img src="/images/nav_logo/logseq.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Logseq</div></div> <div title="Logseq is a privacy-first, open-source knowledge base that works on top of local plain-text Markdown and Org-mode files. Use it to write, organize and share your thoughts, keep your to-do list, and build your own digital garden." class="cc-nav-des">
+                Logseq is a privacy-first, open-source knowledge base that works on top of local plain-text Markdown and Org-mode files. Use it to write, organize and share your thoughts, keep your to-do list, and build your own digital garden.
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.typoraio.cn/" target="_blank"><div class="my-nav-item"><div title="Typora" class="cc-nav-title"><img src="/images/nav_logo/typora.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Typora</div></div> <div title="一款 Markdown 编辑器和阅读器" class="cc-nav-des">
+                一款 Markdown 编辑器和阅读器
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://molunerfinn.com/PicGo/" target="_blank"><div class="my-nav-item"><div title="PicGo" class="cc-nav-title"><img src="/images/nav_logo/PicGo.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">PicGo</div></div> <div title="图片上传+管理新体验" class="cc-nav-des">
+                图片上传+管理新体验
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://www.bandisoft.com/honeyview/" target="_blank"><div class="my-nav-item"><div title="Honeyview" class="cc-nav-title"><img src="/images/nav_logo/Honeyview.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Honeyview</div></div> <div title="Honeyview 是一款快速的图片查看器" class="cc-nav-des">
+                Honeyview 是一款快速的图片查看器
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://github.com/QL-Win/QuickLook/releases" target="_blank"><div class="my-nav-item"><div title="QuickLook" class="cc-nav-title"><img src="/images/nav_logo/QuickLook.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">QuickLook</div></div> <div title="Bring macOS “Quick Look” feature to Windows" class="cc-nav-des">
+                Bring macOS “Quick Look” feature to Windows
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://github.com/microsoft/PowerToys" target="_blank"><div class="my-nav-item"><div title="PowerToys" class="cc-nav-title"><img src="/images/nav_logo/PowerToys.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">PowerToys</div></div> <div title="Windows system utilities to maximize productivity" class="cc-nav-des">
+                Windows system utilities to maximize productivity
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://client.jijidown.com/" target="_blank"><div class="my-nav-item"><div title="唧唧Down" class="cc-nav-title"><img src="/images/nav_logo/jijidown.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">唧唧Down</div></div> <div title="这是一个用于下载 bilibili 视频的PC应用程序, 它能够下载 99% bilibili 视频" class="cc-nav-des">
+                这是一个用于下载 bilibili 视频的PC应用程序, 它能够下载 99% bilibili 视频
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.u.tools/" target="_blank"><div class="my-nav-item"><div title="uTool" class="cc-nav-title"><img src="/images/nav_logo/tools.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">uTool</div></div> <div title="新一代效率工具平台，自由组合插件应用，打造专属你的趁手工具集" class="cc-nav-des">
+                新一代效率工具平台，自由组合插件应用，打造专属你的趁手工具集
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.itsk.com/thread-427560-1-1.html" target="_blank"><div class="my-nav-item"><div title="优启通" class="cc-nav-title"><img src="/images/nav_logo/itsk.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">优启通</div></div> <div title="优启通（EasyU，简称EU）是IT天空精心打造的一款系统预安装环境（PE）" class="cc-nav-des">
+                优启通（EasyU，简称EU）是IT天空精心打造的一款系统预安装环境（PE）
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.msi.com/Landing/afterburner/graphics-cards" target="_blank"><div class="my-nav-item"><div title="Afterburner" class="cc-nav-title"><img src="/images/nav_logo/Afterburner.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Afterburner</div></div> <div title="PC 性能监控" class="cc-nav-des">
+                PC 性能监控
+              </div></div></a></div></div></h2><h2 id="idea"><a href="#idea" class="header-anchor">#</a>idea
+      <div class="el-row" style="margin-left:-10px;margin-right:-10px;margin-top:20px;"><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.jetbrains.com.cn/idea/download/other.html" target="_blank"><div class="my-nav-item"><div title="IntelliJ IDEA 下载" class="cc-nav-title"><img src="/images/nav_logo/IntelliJ IDEA.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IntelliJ IDEA 下载</div></div> <div title="获取 IntelliJ IDEA 的历史版本。" class="cc-nav-des">
+                获取 IntelliJ IDEA 的历史版本。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.jetbrains.com.cn/idea/features/" target="_blank"><div class="my-nav-item"><div title="IntelliJ IDEA 功能介绍" class="cc-nav-title"><img src="/images/nav_logo/IntelliJ IDEA.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IntelliJ IDEA 功能介绍</div></div> <div title="IntelliJ IDEA – 领先的 Java 和 Kotlin IDE 使开发更高效、更愉快的 IDE" class="cc-nav-des">
+                IntelliJ IDEA – 领先的 Java 和 Kotlin IDE 使开发更高效、更愉快的 IDE
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.jetbrains.com.cn/idea/whatsnew/" target="_blank"><div class="my-nav-item"><div title="IntelliJ IDEA 最新变化" class="cc-nav-title"><img src="/images/nav_logo/IntelliJ IDEA.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IntelliJ IDEA 最新变化</div></div> <div title="在 IntelliJ IDEA 2022.3 中，可以通过设置切换到新 UI，即可预览焕然一新的 IDE 外观。 此版本引入了一个新的 Settings Sync（设置同步）解决方案，用于同步和备份自定义用户设置。 此外，IntelliJ IDEA Ultimate 还提供了一种处理 WSL 2 中的项目的新方式、适用于 Spring Bean 自动装配和 OpenAPI 架构生成的新操作，以及备受期待的 Redis 支持。" class="cc-nav-des">
+                在 IntelliJ IDEA 2022.3 中，可以通过设置切换到新 UI，即可预览焕然一新的 IDE 外观。 此版本引入了一个新的 Settings Sync（设置同步）解决方案，用于同步和备份自定义用户设置。 此外，IntelliJ IDEA Ultimate 还提供了一种处理 WSL 2 中的项目的新方式、适用于 Spring Bean 自动装配和 OpenAPI 架构生成的新操作，以及备受期待的 Redis 支持。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://zhile.io/" target="_blank"><div class="my-nav-item"><div title="知了" class="cc-nav-title"><img src="/images/nav_logo/zhile.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">知了</div></div> <div title="知了 – 朝闻道，夕可眠矣。" class="cc-nav-des">
+                知了 – 朝闻道，夕可眠矣。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.jiweichengzhu.com/ide/code" target="_blank"><div class="my-nav-item"><div title="IntelliJ IDEA 激活码" class="cc-nav-title"><img src="/images/nav_logo/jiweichengzhu.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IntelliJ IDEA 激活码</div></div> <div title="idea pycharm webstrom goland phpstorm注册码激活码_积微成著" class="cc-nav-des">
+                idea pycharm webstrom goland phpstorm注册码激活码_积微成著
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.jiweichengzhu.com/topic/85dab3064dff41198b5a02d164e2d6c3" target="_blank"><div class="my-nav-item"><div title="IntelliJ IDEA 破解教程" class="cc-nav-title"><img src="/images/nav_logo/jiweichengzhu.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IntelliJ IDEA 破解教程</div></div> <div title="idea如何破解激活？如何永久激活？idea已经更新到2022.2版本了，这里不仅有最新的idea激活码，还有2022.2版本最新的永久破解激活方法，和一些常见idea激活时遇到的疑难杂症。激活资料下载地址：https://www.jiweichengzhu.com/idea/code" class="cc-nav-des">
+                idea如何破解激活？如何永久激活？idea已经更新到2022.2版本了，这里不仅有最新的idea激活码，还有2022.2版本最新的永久破解激活方法，和一些常见idea激活时遇到的疑难杂症。激活资料下载地址：https://www.jiweichengzhu.com/idea/code
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://idea.javatiku.cn/" target="_blank"><div class="my-nav-item"><div title="IDEA注册码" class="cc-nav-title"><img src="/images/nav_logo/javatiku.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IDEA注册码</div></div> <div title="免费提供最新IDEA注册码" class="cc-nav-des">
+                免费提供最新IDEA注册码
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.jiweichengzhu.com/article/33c0330308f5429faf7a1e74127c9708" target="_blank"><div class="my-nav-item"><div title="JRebel 免费激活图文教程" class="cc-nav-title"><img src="/images/nav_logo/jiweichengzhu.ico" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">JRebel 免费激活图文教程</div></div> <div title="IntelliJ IDEA热部署插件JRebel免费激活图文教程" class="cc-nav-des">
+                IntelliJ IDEA热部署插件JRebel免费激活图文教程
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://blog.csdn.net/lianghecai52171314/article/details/105637251" target="_blank"><div class="my-nav-item"><div title="JRebel 插件使用详解" class="cc-nav-title"><img src="/images/nav_logo/csdn.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">JRebel 插件使用详解</div></div> <div title="Jrebel 可快速实现热部署，节省了大量重启时间，提高了个人开发效率。" class="cc-nav-des">
+                Jrebel 可快速实现热部署，节省了大量重启时间，提高了个人开发效率。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://blog.csdn.net/fanrenxiang/article/details/80503490" target="_blank"><div class="my-nav-item"><div title="Idea 教程汇总篇" class="cc-nav-title"><img src="/images/nav_logo/csdn.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Idea 教程汇总篇</div></div> <div title="Jrebel 可快速实现热部署，节省了大量重启时间，提高了个人开发效率。" class="cc-nav-des">
+                Jrebel 可快速实现热部署，节省了大量重启时间，提高了个人开发效率。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.cnblogs.com/jajian/tag/IntelliJ%20IDEA/" target="_blank"><div class="my-nav-item"><div title="IntelliJ IDEA 教程" class="cc-nav-title"><img src="/images/nav_logo/JaJian.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IntelliJ IDEA 教程</div></div> <div title="IntelliJ IDEA 教程" class="cc-nav-des">
+                IntelliJ IDEA 教程
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://idea.javaguide.cn/" target="_blank"><div class="my-nav-item"><div title="IDEA 高效使用指南" class="cc-nav-title"><img src="/images/nav_logo/IntelliJ IDEA.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IDEA 高效使用指南</div></div> <div title="IDEA 高效使用指南" class="cc-nav-des">
+                IDEA 高效使用指南
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.exception.site/article/30" target="_blank"><div class="my-nav-item"><div title="IDEA 关闭更新提示" class="cc-nav-title"><img src="/images/nav_logo/exception.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IDEA 关闭更新提示</div></div> <div title="通常情况下，当我们打开 IDEA 后， 如果 IDEA 检测到官方有最新的版本，在右下角都会弹出提示框，提示我们是否需要将 IDEA 升级到最新版本" class="cc-nav-des">
+                通常情况下，当我们打开 IDEA 后， 如果 IDEA 检测到官方有最新的版本，在右下角都会弹出提示框，提示我们是否需要将 IDEA 升级到最新版本
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://blog.csdn.net/kangswx/article/details/91816806" target="_blank"><div class="my-nav-item"><div title="Idea注入Mapper警告" class="cc-nav-title"><img src="/images/nav_logo/csdn.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Idea注入Mapper警告</div></div> <div title="使用IntelliJ IDEA的小伙伴一定知道在使用Mybaits的时候，注入mapper的是一直会有一个红色的警告" class="cc-nav-des">
+                使用IntelliJ IDEA的小伙伴一定知道在使用Mybaits的时候，注入mapper的是一直会有一个红色的警告
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.jianshu.com/p/dab337159b83" target="_blank"><div class="my-nav-item"><div title="Idea 格式化、注释模板" class="cc-nav-title"><img src="/images/nav_logo/jianshu.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Idea 格式化、注释模板</div></div> <div title="统一的代码格式和注释格式，能给代码阅读上带来极大的便利，给代码改动上提高极大的效率。" class="cc-nav-des">
+                统一的代码格式和注释格式，能给代码阅读上带来极大的便利，给代码改动上提高极大的效率。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.cnblogs.com/assistants/p/9851877.html" target="_blank"><div class="my-nav-item"><div title="Idea 方法注释报错" class="cc-nav-title"><img src="/images/nav_logo/cnblogs-logo.jpg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Idea 方法注释报错</div></div> <div title="Idea如何设置忽略方法注释中参数的变化产生的报错" class="cc-nav-des">
+                Idea如何设置忽略方法注释中参数的变化产生的报错
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.cnblogs.com/chiangchou/p/idea-debug.html" target="_blank"><div class="my-nav-item"><div title="IDEA Debug" class="cc-nav-title"><img src="/images/nav_logo/cnblogs.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IDEA Debug</div></div> <div title="Debug用来追踪代码的运行流程，通常在程序运行过程中出现异常，启用Debug模式可以分析定位异常发生的位置，以及在运行过程中参数的变化。通常我们也可以启用Debug模式来跟踪代码的运行流程去学习三方框架的源码。" class="cc-nav-des">
+                Debug用来追踪代码的运行流程，通常在程序运行过程中出现异常，启用Debug模式可以分析定位异常发生的位置，以及在运行过程中参数的变化。通常我们也可以启用Debug模式来跟踪代码的运行流程去学习三方框架的源码。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="http://blog.zhaojishun.cn/articles/2020/01/27/1580092173752.html" target="_blank"><div class="my-nav-item"><div title="高效使用IDEA" class="cc-nav-title"><img src="/images/nav_logo/IntelliJ IDEA.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">高效使用IDEA</div></div> <div title="熟练使用以下技巧后不用鼠标也可体验到丝滑的IDEA，编码速度有质的飞跃。" class="cc-nav-des">
+                熟练使用以下技巧后不用鼠标也可体验到丝滑的IDEA，编码速度有质的飞跃。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.shuzhiduo.com/A/pRdBDog2Jn/" target="_blank"><div class="my-nav-item"><div title="IDEA高效使用教程" class="cc-nav-title"><img src="/images/nav_logo/IntelliJ IDEA.svg" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">IDEA高效使用教程</div></div> <div title="安装好Intellij idea之后，进行如下的初始化操作，工作效率提升十倍。" class="cc-nav-des">
+                安装好Intellij idea之后，进行如下的初始化操作，工作效率提升十倍。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://blog.csdn.net/kangswx/article/details/89638682" target="_blank"><div class="my-nav-item"><div title="Lombok 安装使用" class="cc-nav-title"><img src="/images/nav_logo/csdn.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">Lombok 安装使用</div></div> <div title="在以前的java代码中有很多不友好，重复的代码，POJO的getter/setter/toString；异常处理；I/O流的关闭操作等，既没什么技术含量，又影响代码的简洁度。于是lombok诞生了，它可以帮助我们通过注解的方式实现实体类的set/get/toString等相关的方法。" class="cc-nav-des">
+                在以前的java代码中有很多不友好，重复的代码，POJO的getter/setter/toString；异常处理；I/O流的关闭操作等，既没什么技术含量，又影响代码的简洁度。于是lombok诞生了，它可以帮助我们通过注解的方式实现实体类的set/get/toString等相关的方法。
+              </div></div></a></div><div class="el-col el-col-24 el-col-xs-12 el-col-sm-10 el-col-md-8 el-col-lg-6 el-col-xl-4" style="padding-left:10px;padding-right:10px;"><a href="https://www.didispace.com/idea-tips/" target="_blank"><div class="my-nav-item"><div title="玩转IDEA" class="cc-nav-title"><img src="/images/nav_logo/didispace.png" class="nozoom medium-zoom-image" style="height:35px;"> <div style="height:40px;float:right;">玩转IDEA</div></div> <div title="帮助你了解IDEA更多牛x的功能、还会给你推荐很多有意思的插件！" class="cc-nav-des">
+                帮助你了解IDEA更多牛x的功能、还会给你推荐很多有意思的插件！
+              </div></div></a></div></div></h2></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/YiShanQingF/LearningNotes/edit/master/docs/md/nav/nav.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">2024/5/8</span></div></footer> <!----> </main></div> <aside class="page-sidebar"> <div class="page-side-toolbar"><!----> <div class="option-box-toc-over"><img src="/images/system/toc.png" class="nozoom"> <span class="show-txt">目录</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><div style="font-weight:bold;text-align:center;">开发百宝箱</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/md/nav/nav.html#优质导航" class="toc-sidebar-link">优质导航</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/nav/nav.html#优质博客" class="toc-sidebar-link">优质博客</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/nav/nav.html#项目代码" class="toc-sidebar-link">项目代码</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/nav/nav.html#技术社区" class="toc-sidebar-link">技术社区</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/nav/nav.html#基础教程" class="toc-sidebar-link">基础教程</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/nav/nav.html#后端开发" class="toc-sidebar-link">后端开发</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/nav/nav.html#前端开发" class="toc-sidebar-link">前端开发</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/nav/nav.html#算法数据结构" class="toc-sidebar-link">算法数据结构</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/nav/nav.html#推荐项目" class="toc-sidebar-link">推荐项目</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/nav/nav.html#电子书" class="toc-sidebar-link">电子书</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/nav/nav.html#在线工具" class="toc-sidebar-link">在线工具</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/nav/nav.html#常用软件" class="toc-sidebar-link">常用软件</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/nav/nav.html#idea" class="toc-sidebar-link">IDEA</a><ul class="toc-sidebar-sub-headers"></ul></li></ul></div></div></div></div></div> <div class="option-box"><img src="/images/system/wechat.png" class="nozoom"> <span class="show-txt">手机看</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="text-align:center"><span style="font-size:0.9rem">微信扫一扫</span> <img height="180px" src="https://api.qrserver.com/v1/create-qr-code/?data=http://zhufj.com/md/nav/nav.html" style="margin:10px;">
+              可以<b>手机看</b>或分享至<b>朋友圈</b></div></div></div></div> <div class="option-box"><a title="点击切换全屏" style="text-align:center;padding-left:2px;"><img src="/images/system/full.png" width="30px" class="nozoom"> <span style="color:gray;font-size:11px;font-weight:400;">全屏看</span></a></div> <div class="option-box"><img src="/images/system/toggle.png" width="30px" class="nozoom"> <span class="show-txt">左栏</span></div> <div class="option-box"><img src="/images/system/download.png" width="25px" class="nozoom"> <span class="show-txt">下资料</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="text-align:center"><span style="font-size:0.8rem;font-weight:bold;">扫描公众号，回复<span style="color:red;">“1024”</span>下载<span style="color:red;">100GB+</span>大学到毕业分阶段学习技术资料、PDF书籍、实战项目、简历模板等「无任何套路」</span> <img src="/images/personal/qrcode.jpg" height="180px" style="margin:10px;"> <b>公众号:</b> BJCoder
+            </div></div></div></div> <!----> <!----></div>  <div class="page-side-sitemap"><div class="option-box"><img src="/images/system/sitemap.png" class="nozoom img"> <span class="show-txt">站点图</span> <div class="sitemap-container"><h4>站点导航图</h4> <table class="sitemap-table"><tr><td nowrap="nowrap"><div class="sitemap-col-group">常用搜索</div></td> <td><div class="sitemap-col-item"><a href="http://www.baidu.com/" target="_blank" title="百度">  
+          百度
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="http://www.google.com/" target="_blank" title="Google">  
+          Google
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="http://www.bing.com/" target="_blank" title="Bing">  
+          Bing
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://github.com" target="_blank" title="Github">  
+          Github
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://www.programcreek.com/java-api-examples/index.php" target="_blank" title="搜代码">  
+          搜代码
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div></td> <!----></tr><tr><td nowrap="nowrap"><div class="sitemap-col-group">技术社区</div></td> <td><div class="sitemap-col-item"><a href="http://www.csdn.net/" target="_blank" title="CDSN">  
+          CDSN
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="http://www.cnblogs.com/" target="_blank" title="博客园">  
+          博客园
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://www.oschina.net" target="_blank" title="OSChina">  
+          OSChina
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://segmentfault.com/" target="_blank" title="思否">  
+          思否
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://juejin.im" target="_blank" title="掘金">  
+          掘金
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://www.linuxidc.com/" target="_blank" title="Linux公社">  
+          Linux公社
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://www.ibm.com/developerworks/cn/" target="_blank" title="IBM 开发者">  
+          IBM 开发者
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://stackoverflow.com" target="_blank" title="StackOverflow">  
+          StackOverflow
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div></td> <!----></tr></table></div></div></div> <!----> </aside></div><div class="global-ui"><div class="pay-read-more-wrap" style="display:none;position:absolute;bottom:0px;z-index:9999;width:100%;margin-top:-100px;font-family:PingFangSC-Regular, sans-serif;"><div id="pay-read-more-mask" style="position: relative; height: 200px; background: -webkit-gradient(linear, 0 0%, 0 100%, from(rgba(255, 255, 255, 0)), to(rgb(255, 255, 255)));"></div> <a id="pay-read-more-btn" target="_blank" style="position: absolute; left: 50%; top: 70%; bottom: 30px; transform: translate(-50%, -50%); width: 160px; height: 36px; line-height: 36px; font-size: 15px; text-align: center; border: 1px solid rgb(222, 104, 109); color: rgb(222, 104, 109); background: rgb(255, 255, 255); cursor: pointer; border-radius: 6px;">付费阅读</a></div></div></div>
+    <script src="/assets/js/cg-styles.js?v=1722145213052" defer></script><script src="/assets/js/cg-4.js?v=1722145213052" defer></script><script src="/assets/js/cg-2.js?v=1722145213052" defer></script><script src="/assets/js/cg-25.js?v=1722145213052" defer></script><script src="/assets/js/cg-app.js?v=1722145213052" defer></script>
+  </body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Hello Java | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/favicon.ico">
+    <script charset="utf-8" async="async" src="/js/jquery.min.js"></script>
+    <script charset="utf-8" async="async" src="/js/global.js"></script>
+    <script charset="utf-8" async="async" src="/js/fingerprint2.min.js"></script>
+    <script>
+              var _hmt = _hmt || [];
+              (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?0b31b4c146bf7126aed5009e1a4a11c8";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+              })();
+            </script>
+    <meta name="description" content="记录学习笔记、项目心得、趟过的雷、踩过的坑">
+    <meta property="article:modified_time" content="2023-03-10T12:26:45.000Z">
+    <meta property="og:title" content="Hello Java">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="/md/java/core/HelloJava.html">
+    <meta name="twitter:title" content="Hello Java">
+    <meta name="twitter:url" content="/md/java/core/HelloJava.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="all">
+    <meta name="author" content="青山">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="keywords" content="学习笔记, DDD抽奖系统，数据结构，重学Java设计模式, 字节码编程, 中间件, 手写Spring, 手写MyBatis，Java基础, 面经手册，面试题，API网关，SpringBoot Stater">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="preload" href="/assets/css/0.styles.4e2267cf.css" as="style"><link rel="preload" href="/assets/css/styles.css?v=1722145213052" as="style"><link rel="preload" href="/assets/js/cg-styles.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-app.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-4.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-51.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-2.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-25.js?v=1722145213052" as="script">
+    <link rel="stylesheet" href="/assets/css/0.styles.4e2267cf.css"><link rel="stylesheet" href="/assets/css/styles.css?v=1722145213052">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/md/nav/nav.html" class="nav-link">
+  导航
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="读书&amp;笔记" class="dropdown-title"><span class="title">读书&amp;笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/book/Java Multithread Programming/Java多线程编程核心技术（第3版）.html" class="nav-link">
+  Java多线程编程核心技术（第3版）
+</a></li><li class="dropdown-subitem"><a href="/md/book/OnJava中文版基础/第一章.html" class="nav-link">
+  On Java 中文版 基础
+</a></li><li class="dropdown-subitem"><a href="/md/sad/必修2-计算机基础.html" class="nav-link">
+  架构师
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java 基础
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/HelloJava.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Hello Java
+</a></li><li class="dropdown-subitem"><a href="/md/java/core/Java-基础-变量.html" class="nav-link">
+  Java 基础
+</a></li><li class="dropdown-subitem"><a href="/md/java/core/Java-基础-面向对象.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>
+          JVM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/jvm/JVM-基础-类字节码详解.html" class="nav-link">
+  JVM 基础
+</a></li><li class="dropdown-subitem"><a href="/md/java/jvm/GC-Java-垃圾回收基础知识.html" class="nav-link">
+  GC
+</a></li></ul></li><li class="dropdown-item"><h4>
+          JUC
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/juc/JUC并发编程.html" class="nav-link">
+  JUC并发编程
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Boot
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Cloud
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Security
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Session
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Data
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Batch
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java框架" class="dropdown-title"><span class="title">Java框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Mybatis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          MybatisPlus
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          日志框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          缓存
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          连接池
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ShardingSphere
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式&amp;算法" class="dropdown-title"><span class="title">设计模式&amp;算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/参考资料.html" class="nav-link">
+  参考资料
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/设计模式七大原则.html" class="nav-link">
+  设计模式七大原则
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/UML图.html" class="nav-link">
+  UML图
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/Java设计模式.html" class="nav-link">
+  Java设计模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Oracle
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          MySQL
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Redis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Elasticsearch
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Kafka
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Mongodb
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Tomcat
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          RabbitMQ
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-简介.html" class="nav-link">
+  Docker 简介
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-安装.html" class="nav-link">
+  Docker 安装
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-常用命令.html" class="nav-link">
+  Docker 常用命令
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-镜像.html" class="nav-link">
+  Docker 镜像
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-数据卷.html" class="nav-link">
+  Docker 数据卷
+</a></li></ul></li><li class="dropdown-item"><h4>
+          K8s
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Maven
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Gradle
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Idea
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/idea/插件.html" class="nav-link">
+  插件
+</a></li><li class="dropdown-subitem"><a href="/md/idea/常用设置.html" class="nav-link">
+  常用设置
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="环境部署" class="dropdown-title"><span class="title">环境部署</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          MySQL
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/db/mysql/MySQL-安装.html" class="nav-link">
+  MySQL 安装
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-安装.html" class="nav-link">
+  Docker 安装
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="源码仓库" class="dropdown-title"><span class="title">源码仓库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/YiShanQingF/LearningNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  开源项目 - Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/zhufanjia/LearningNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  开源项目 - Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/md/nav/nav.html" class="nav-link">
+  导航
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="读书&amp;笔记" class="dropdown-title"><span class="title">读书&amp;笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/book/Java Multithread Programming/Java多线程编程核心技术（第3版）.html" class="nav-link">
+  Java多线程编程核心技术（第3版）
+</a></li><li class="dropdown-subitem"><a href="/md/book/OnJava中文版基础/第一章.html" class="nav-link">
+  On Java 中文版 基础
+</a></li><li class="dropdown-subitem"><a href="/md/sad/必修2-计算机基础.html" class="nav-link">
+  架构师
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java 基础
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/HelloJava.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Hello Java
+</a></li><li class="dropdown-subitem"><a href="/md/java/core/Java-基础-变量.html" class="nav-link">
+  Java 基础
+</a></li><li class="dropdown-subitem"><a href="/md/java/core/Java-基础-面向对象.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>
+          JVM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/jvm/JVM-基础-类字节码详解.html" class="nav-link">
+  JVM 基础
+</a></li><li class="dropdown-subitem"><a href="/md/java/jvm/GC-Java-垃圾回收基础知识.html" class="nav-link">
+  GC
+</a></li></ul></li><li class="dropdown-item"><h4>
+          JUC
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/juc/JUC并发编程.html" class="nav-link">
+  JUC并发编程
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Boot
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Cloud
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Security
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Session
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Data
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Batch
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java框架" class="dropdown-title"><span class="title">Java框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Mybatis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          MybatisPlus
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          日志框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          缓存
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          连接池
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ShardingSphere
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式&amp;算法" class="dropdown-title"><span class="title">设计模式&amp;算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/参考资料.html" class="nav-link">
+  参考资料
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/设计模式七大原则.html" class="nav-link">
+  设计模式七大原则
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/UML图.html" class="nav-link">
+  UML图
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/Java设计模式.html" class="nav-link">
+  Java设计模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Oracle
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          MySQL
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Redis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Elasticsearch
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Kafka
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Mongodb
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Tomcat
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          RabbitMQ
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-简介.html" class="nav-link">
+  Docker 简介
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-安装.html" class="nav-link">
+  Docker 安装
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-常用命令.html" class="nav-link">
+  Docker 常用命令
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-镜像.html" class="nav-link">
+  Docker 镜像
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-数据卷.html" class="nav-link">
+  Docker 数据卷
+</a></li></ul></li><li class="dropdown-item"><h4>
+          K8s
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Maven
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Gradle
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Idea
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/idea/插件.html" class="nav-link">
+  插件
+</a></li><li class="dropdown-subitem"><a href="/md/idea/常用设置.html" class="nav-link">
+  常用设置
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="环境部署" class="dropdown-title"><span class="title">环境部署</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          MySQL
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/db/mysql/MySQL-安装.html" class="nav-link">
+  MySQL 安装
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-安装.html" class="nav-link">
+  Docker 安装
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="源码仓库" class="dropdown-title"><span class="title">源码仓库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/YiShanQingF/LearningNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  开源项目 - Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/zhufanjia/LearningNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  开源项目 - Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Java 基础</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/md/java/core/HelloJava.html" aria-current="page" class="active sidebar-link">Hello Java</a></li><li><a href="/md/java/core/Java-基础-变量.html" class="sidebar-link">Java-基础-变量</a></li><li><a href="/md/java/core/Java-基础-运算符.html" class="sidebar-link">Java-基础-运算符</a></li><li><a href="/md/java/core/Java-基础-面向对象.html" class="sidebar-link">Java-基础-面向对象</a></li></ul></section></li></ul> </aside> <div><main class="page"> <div class="theme-default-content content__default"><h1 id="hello-java"><a href="#hello-java" class="header-anchor">#</a> Hello Java</h1> <h2 id="java语言概述"><a href="#java语言概述" class="header-anchor">#</a> Java语言概述</h2> <h3 id="java-概述"><a href="#java-概述" class="header-anchor">#</a> Java 概述</h3> <ul><li>是<code>SUN</code>(Stanford University Network，斯坦福大学网络公司 ) <code>1995年</code>推出的一门高级编程语言。</li> <li>是一种面向Internet的编程语言。Java一开始富有吸引力是因为Java程序可以在<code>Web浏览器</code>中运行。这些Java程序被称为<code>Java小程序</code>（applet），内嵌在HTML代码中。</li> <li>伴随着互联网的迅猛发展，以及Java技术在web方面的不断成熟，已经成为Web应用程序的首选开发语言。</li></ul> <h3 id="java-语言间史"><a href="#java-语言间史" class="header-anchor">#</a> Java 语言间史</h3> <p><strong>起步阶段：</strong></p> <p>1991年，Sun公司的工程师小组想要设计一种语言，应用在<code>电视机</code>、<code>电话</code>、<code>闹钟</code>、<code>烤面包机</code>等家用电器的控制和通信。由于这些设备的<code>处理能力</code>和<code>内存</code>都很有限，并且不同的厂商会选择不同的中央处理器(CPU)，因此这种语言的关键是<code>代码短小</code>、<code>紧凑</code>且<code>与平台无关</code>（即不能与任何特定的体系结构捆绑在一起）。</p> <p>Gosling团队率先创造了这个语言，并命名为“<code>Oak</code>&quot;（起名的原因是因为他非常喜欢自己办公室外的橡树)。后因智能化家电的市场需求没有预期的高，Sun公司放弃了该项计划。</p> <p>随着20世纪90年代互联网的发展，Sun公司发现该语言在互联网上应用的前景，于是改造了Oak，于1995年5月以Java的名称正式发布。（Java是印度尼西亚<code>爪哇岛</code>的英文名称，因盛产咖啡而闻名。）</p> <p><img alt="" data-src="/images/java/core/image-20220309230839100.png" loading="lazy" class="lazy"></p> <p><strong>发展阶段：</strong></p> <table><thead><tr><th style="text-align:center;">发行版本</th> <th style="text-align:center;">发行时间</th> <th style="text-align:center;">备注</th></tr></thead> <tbody><tr><td style="text-align:center;">Java 1.0</td> <td style="text-align:center;">1996.01.23</td> <td style="text-align:center;">Sun公司发布了Java的第一个开发工具包</td></tr> <tr><td style="text-align:center;">Java 1.1</td> <td style="text-align:center;">1997.02.19</td> <td style="text-align:center;">JavaOne会议召开，创当时全球同类会议规模之最。</td></tr> <tr><td style="text-align:center;">Java 1.2</td> <td style="text-align:center;">1998.12.08</td> <td style="text-align:center;">Java拆分成：J2SE（标准版）、J2EE（企业版）、J2ME（小型版）</td></tr> <tr><td style="text-align:center;">Java 1.3</td> <td style="text-align:center;">2000.05.08</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">Java1.4</td> <td style="text-align:center;">2004.02.06</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;"><strong>Java 5.0</strong></td> <td style="text-align:center;"><strong>2004.09.30</strong></td> <td style="text-align:center;"><strong>①版本号从1.4直接更新至5.0；②平台更名为JavaSE、JavaEE、JavaME</strong></td></tr> <tr><td style="text-align:center;">Java 6.0</td> <td style="text-align:center;">2006.12.11</td> <td style="text-align:center;">2009.04.20 Oracle宣布收购SUN公司</td></tr> <tr><td style="text-align:center;"></td> <td style="text-align:center;">2009.04.20</td> <td style="text-align:center;">Oracle公司收购SUN，交易价格<code>74亿</code>美元。</td></tr> <tr><td style="text-align:center;">Java 7.0</td> <td style="text-align:center;">2011.07.02</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;"><strong>Java 8.0</strong></td> <td style="text-align:center;"><strong>2014.03.18</strong></td> <td style="text-align:center;"><strong>此版本是继Java 5.0以来变化最大的版本。是长期支持版本（LTS）</strong></td></tr> <tr><td style="text-align:center;">Java 9.0</td> <td style="text-align:center;">2017.09.22</td> <td style="text-align:center;">①此版本开始，<strong>每半年更新一次</strong>；②Java 9.0开始不再支持windows 32位系统</td></tr> <tr><td style="text-align:center;">Java 10.0</td> <td style="text-align:center;">2018.03.21</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;"><strong>Java 11.0</strong></td> <td style="text-align:center;"><strong>2018.09.25</strong></td> <td style="text-align:center;"><strong>JDK安装包取消独立JRE安装包，是长期支持版本（LTS）</strong></td></tr> <tr><td style="text-align:center;">Java 12.0</td> <td style="text-align:center;">2019.03.19</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">...</td> <td style="text-align:center;">...</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;"><strong>Java17.0</strong></td> <td style="text-align:center;"><strong>2021.09</strong></td> <td style="text-align:center;"><strong>发布Java 17.0，版本号也称为21.9，是长期支持版本。</strong></td></tr> <tr><td style="text-align:center;">...</td> <td style="text-align:center;">...</td> <td style="text-align:center;"></td></tr> <tr><td style="text-align:center;">Java19.0</td> <td style="text-align:center;">2022.09</td> <td style="text-align:center;">发布Java19.0，版本号也称为22.9。</td></tr></tbody></table> <h3 id="java-之父"><a href="#java-之父" class="header-anchor">#</a> Java 之父</h3> <ul><li><code>詹姆斯·高斯林(James Gosling)</code>先生以“Java 技术之父”而闻名于世。他是Java 技术的创始人，他亲手设计了Java语言，并开发了Java编译器和Java虚拟机，使Java成为了世界上最流行的开发语言。</li> <li>James Gosling于1984 年加入Sun公司，并一直服务于Sun公司，直至2010年前后，Sun被Oracle并购而加入Oracle，担任客户端软件集团的首席技术官; 2010年4月从Oracle离职。</li></ul> <h3 id="公司八卦"><a href="#公司八卦" class="header-anchor">#</a> 公司八卦</h3> <ul><li><strong>SUN 与 Oracle</strong></li></ul> <blockquote><p>SUN是一家<code>极具创新能力</code>的公司，2001年 “9.11”以前，SUN公司市值<code>超过1000亿</code>美元。 但是没能利用Java构建一个强有力、可变现的生态系统，没打好Java这张牌。此后，互联网泡沫破裂，硬件需求大幅减少，它的市值在一个月之内跌幅超过90%。<strong>SUN公司的成长用了20年，而衰落只用了1年！</strong></p></blockquote> <p><img alt="" data-src="/images/java/core/image-20220309230923533.png" loading="lazy" class="lazy"></p> <ul><li><strong>Oracle 与 Google</strong></li></ul> <blockquote><p>Google和Oracle的侵权事件：</p> <p>2010 年 8 月，Oracle 起诉 Google 的 Android 系统侵权，要求赔偿 26 亿美元。</p> <ul><li>Oracle认为Google的代码中使用了Java的<code>37个API</code>，并且认为Google是故意为之，因为这样做的好处是可以让更多的Java程序员更容易接受Android的代码。</li> <li>Oracle认为Android 中有<code>9行代码</code>直接抄袭了Java的实现。这9行牛气哄哄的代码都出自一人之手，他就是Java 大牛------<code>Joshua Bloch</code>。</li></ul> <p>2018 年 3 月，美国联邦巡回上诉法院裁决，谷歌侵犯了甲骨文的版权，支付高达<code>88亿美元</code>的赔偿金。</p> <p>2021 年 4 月，美国最高法院给出了最终裁决：谷歌胜诉，其代码属于“合理使用”的范畴。为期十多年的软件行业“第一版权案”落幕。</p></blockquote> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//Code In OpenJDK / Android ：</span>
+<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">rangeCheck</span><span class="token punctuation">(</span><span class="token keyword">int</span> arrayLen<span class="token punctuation">,</span> <span class="token keyword">int</span> fromIndex<span class="token punctuation">,</span> <span class="token keyword">int</span> toIndex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span>fromIndex <span class="token operator">&gt;</span> toIndex<span class="token punctuation">)</span>
+       <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token string">&quot;fromIndex(&quot;</span> <span class="token operator">+</span> fromIndex <span class="token operator">+</span>
+                  <span class="token string">&quot;) &gt; toIndex(&quot;</span> <span class="token operator">+</span> toIndex<span class="token operator">+</span><span class="token string">&quot;)&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span>fromIndex <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span>
+       <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>fromIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token keyword">if</span> <span class="token punctuation">(</span>toIndex <span class="token operator">&gt;</span> arrayLen<span class="token punctuation">)</span>
+       <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArrayIndexOutOfBoundsException</span><span class="token punctuation">(</span>toIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p><img alt="" data-src="/images/java/core/image-20221027145908490.png" loading="lazy" class="lazy"></p> <h3 id="java技术体系平台"><a href="#java技术体系平台" class="header-anchor">#</a> Java技术体系平台</h3> <ul><li><strong>Java SE(Java Standard Edition)标准版</strong> <ul><li>支持面向<code>桌面级应用</code>（如Windows下的应用程序）的Java平台，即定位个人计算机的应用开发。</li> <li>包括用户界面接口AWT及Swing，网络功能与国际化、图像处理能力以及输入输出支持等。</li> <li>此版本以前称为J2SE</li></ul></li> <li><strong>Java EE(Java Enterprise Edition)企业版</strong> <ul><li>为开发企业环境下的应用程序提供的一套解决方案，即定位<code>在服务器端的Web应用开发</code>。</li> <li>JavaEE是JavaSE的扩展，增加了用于服务器开发的类库。如：Servlet能够延伸服务器的功能，通过请求-响应的模式来处理客户端的请求；JSP是一种可以将Java程序代码内嵌在网页内的技术。</li> <li>版本以前称为J2EE</li></ul></li> <li><strong>Java ME(Java Micro Edition)小型版</strong> <ul><li>支持Java程序运行在<code>移动终端（手机、机顶盒）上的平台</code>，即定位在消费性电子产品的应用开发</li> <li>JavaME是JavaSE的内伸，精简了JavaSE 的核心类库，同时也提供自己的扩展类。增加了适合微小装置的类库：javax.microedition.io.*等。</li> <li>此版本以前称为J2ME</li></ul></li></ul> <p><img alt="" data-src="/images/java/core/image-20211218093009884.png" loading="lazy" class="lazy"></p> <blockquote><p>注意：</p> <p>Android开发不等同于Java ME的开发</p></blockquote> <h2 id="java开发环境搭建"><a href="#java开发环境搭建" class="header-anchor">#</a> Java开发环境搭建</h2> <h3 id="什么是jdk、jre"><a href="#什么是jdk、jre" class="header-anchor">#</a> 什么是JDK、JRE</h3> <ul><li><strong>JDK</strong>  (<code>J</code>ava <code>D</code>evelopment <code>K</code>it)：是Java程序开发工具包，包含<code>JRE</code> 和开发人员使用的工具。</li> <li>**JRE ** (<code>J</code>ava <code>R</code>untime <code>E</code>nvironment) ：是Java程序的运行时环境，包含<code>JVM</code> 和运行时所需要的<code>核心类库</code>。</li></ul> <p>如下是Java 8.0 Platform：</p> <p><img alt="" data-src="/images/java/core/JDKJRE.jpg" loading="lazy" class="lazy"> <img alt="" data-src="/images/java/core/image-20220310200719462.png" loading="lazy" class="lazy"></p> <blockquote><p>补充：JDK与Java SE/EE/ME的区别</p> <p>jdk是不区分se、ee、me的，所以你在oracle的官网上只要下载java se对应的版本jdk即可：</p> <p>实际上开发web时，就应该选择 Java EE，而 Java EE 你只需要两个包<code>jsp-api.jar</code> 和<code>servlet-api.jar</code>，而这两个包是没有官方版本的。 也就是 Java 没有提供这两个包，只提供了一个规范。那么这两个包是谁提供的？ 是Web容器，也就是Tomcat、Jetty、JBoss之类的服务器提供的。</p></blockquote> <blockquote><p>小结：</p> <p>JDK = JRE + 开发工具集（例如Javac编译工具等）</p> <p>JRE = JVM + Java SE标准类库</p></blockquote> <h3 id="jdk版本选择"><a href="#jdk版本选择" class="header-anchor">#</a> JDK版本选择</h3> <p><img alt="" data-src="/images/java/core/image-20220310201513590.png" loading="lazy" class="lazy"></p> <ul><li>自Java 8版本发布以来，其后的每次更新，都会有小伙伴高呼：<strong>Java8 YYDS！</strong></li> <li>论坛的声音：“<code>你发任你发，我用Java 8！</code>”</li></ul> <p><strong>数据说话：</strong></p> <p>JRebel 于2022年4月前后发布了《2022 年Java生态系统状况报告》，报告中提到使用Java11 的占比最多，Java 8 紧随其后，如下图。而此前2020年的报告显示，Java8占比达到了<code>84.48%</code>。
+<img alt="" data-src="/images/java/core/img.png" loading="lazy" class="lazy"></p> <blockquote><p>可能存在的原因</p> <p>G1是最受欢迎的GC算法。Java 11及更高版本的G1收集器是默认的GC，而Java 8中并不是。出于对G1的喜爱，很多开发者才会选择抛弃Java 8。</p></blockquote> <p><strong>Spring框架说话：</strong></p> <p>在Java 17正式发布之前，Java开发框架Spring率先在官博宣布，Spring Framework 6和Spring Boot 3计划在2022年第四季度实现总体可用性的高端基线：</p> <ul><li><p>Java 17+(来自 Spring Framework 5.3.x 线中的 Java 8-17)</p></li> <li><p>Jakarta EE 9+（来自Spring框架5.3.x 线中的 Java EE 7-8）</p></li></ul> <p>Spring 官方说明：<code>https://spring.io/blog</code></p> <p><img alt="" data-src="/images/java/core/image-20220527155439683.png" loading="lazy" class="lazy"></p> <blockquote><p>意味着：springboot3.0 是需要用java17和spring6.0为基础建设。如果从企业选型最新springboot3.0作为架构来说，它搭配jdk17肯定是标配了。</p></blockquote> <h3 id="jdk的下载"><a href="#jdk的下载" class="header-anchor">#</a> JDK的下载</h3> <ul><li>下载网址（Oracle公司官网）：www.oracle.com</li> <li>下载步骤：如图所示，在官网底部选择Developers开发者</li></ul> <h3 id="配置path环境变量"><a href="#配置path环境变量" class="header-anchor">#</a> 配置path环境变量</h3> <ul><li>步骤：</li></ul> <p>（1）打开桌面上的计算机，进入后在左侧找到<code>此电脑</code>，单击鼠标<code>右键</code>，选择<code>属性</code>，如图所示：</p> <p>（2）选择<code>高级系统设置</code>，如图所示：</p> <p>（3）在<code>高级</code>选项卡，单击<code>环境变量</code>，如图所示：</p> <p>（4）在<code>系统变量</code>中，选中<code>Path</code> 环境变量，<code>双击</code>或者<code>点击编辑</code> ,如图所示：</p> <p>（5）点击<code>新建</code>，填入<code>D:\develop_tools\jdk\jdk1.8.0_271\bin</code>  ，并将此值<code>上移</code>到变量列表的首位。如图所示：</p> <ul><li><p>编辑模式1：</p></li> <li><p>编辑模式2：（注意，结尾需要有英文模式下的;）</p></li></ul> <p>（6）环境变量配置完成，<strong>重新开启</strong>DOS命令行，在任意目录下输入<code>javac</code> 或<code>java</code>命令或<code>java -version</code>，运行成功。</p> <h4 id="_7-5-3-jdk8配置方案2-配置java-home-path-推荐"><a href="#_7-5-3-jdk8配置方案2-配置java-home-path-推荐" class="header-anchor">#</a> 7.5.3 JDK8配置方案2：配置JAVA_HOME+path（推荐）</h4> <ul><li>步骤：</li></ul> <p>（1）打开桌面上的计算机，进入后在左侧找到<code>计算机</code>，单击鼠标<code>右键</code>，选择<code>属性</code>，如图所示：</p> <p>（2）选择<code>高级系统设置</code>，如图所示：</p> <p>（3）在<code>高级</code>选项卡，单击<code>环境变量</code>，如图所示：</p> <p>（4）在<code>系统变量</code>中，单击<code>新建</code> ，创建新的环境变量，如图所示：</p> <p>（5）变量名输入<code>JAVA_HOME</code>，变量值输入 <code>D:\develop_tools\jdk\jdk1.8.0_271</code> ，单击<code>确定</code>，如图所示：</p> <p>（6）选中<code>Path</code> 环境变量，<code>双击</code>或者<code>点击编辑</code> ，如图所示：</p> <p>（7）在变量值的最前面，键入<code>%JAVA_HOME%\bin</code>。如图所示：</p> <blockquote><p>注意：强烈建议将%JAVA_HOME%\bin声明在path环境变量中所有变量的最前面！</p></blockquote> <p>（8）环境变量配置完成，<strong>重启</strong>DOS命令行，在任意目录下输入<code>javac</code> 或<code>java</code>命令或<code>java -version</code>，运行成功。</p> <h3 id="jdk17配置方案-自动配置"><a href="#jdk17配置方案-自动配置" class="header-anchor">#</a> JDK17配置方案：自动配置</h3> <p>不管有没有提前安装JDK8或其它版本JDK，在安装完JDK17之后，理应按JDK8的方式配置path环境变量。但是，发现在安装完JDK17以后，配置环境变量之前，执行CMD指令：</p> <p>竟然成功了！而且是17.0.2版本。因为JDK17在安装之后，自动进行了环境变量的配置。</p> <p>建议，将JDK17安装的路径，设置为JAVA_HOME，并将<code>%JAVA_HOME%\bin</code>上移到首位。</p> <h2 id="java-api文档"><a href="#java-api文档" class="header-anchor">#</a> Java API文档</h2> <ul><li>API （Application Programming Interface，应用程序编程接口）是 Java 提供的基本编程接口。</li> <li>Java语言提供了大量的基础类，因此 Oracle 也为这些基础类提供了相应的说明文档，用于告诉开发者如何使用这些类，以及这些类里包含的方法。大多数Java书籍中的类的介绍都要参照它来完成，它是编程者经常查阅的资料。</li> <li>Java API文档，即为JDK使用说明书、帮助文档。类似于：</li> <li>下载API文档：
+<ul><li>在线看：https://docs.oracle.com/en/java/javase/17/docs/api/index.html</li> <li>离线下载：https://www.oracle.com/java/technologies/javase-jdk17-doc-downloads.html</li></ul></li></ul> <h2 id="java核心机制-jvm"><a href="#java核心机制-jvm" class="header-anchor">#</a> Java核心机制：JVM</h2> <h3 id="java语言的优缺点"><a href="#java语言的优缺点" class="header-anchor">#</a> Java语言的优缺点</h3> <p>Java确实是从C语言和C++语言继承了许多成份，甚至可以将Java看成是类C语言发展和衍生的产物。“青出于蓝，而胜于蓝”。</p> <h4 id="优点"><a href="#优点" class="header-anchor">#</a> 优点</h4> <ul><li><p>**跨平台性：**这是Java的核心优势。Java在最初设计时就很注重移植和跨平台性。比如：Java的int永远都是32位。不像C++可能是16，32，可能是根据编译器厂商规定的变化。</p></li> <li><p>通过Java语言编写的应用程序在不同的系统平台上都可以运行。“<code>Write once , Run Anywhere</code>”。</p></li> <li><p>原理：只要在需要运行 java 应用程序的操作系统上，先安装一个Java虚拟机 (<code>J</code>VM ，Java <code>V</code>irtual <code>M</code>achine) 即可。由JVM来负责Java程序在该系统中的运行。</p></li> <li><p><strong>面向对象性：</strong></p> <p>面向对象是一种程序设计技术，非常<code>适合大型软件的设计和开发</code>。面向对象编程支持封装、继承、多态等特性，让程序更好达到<code>高内聚</code>，<code>低耦合</code>的标准。</p></li> <li><p>**健壮性：**吸收了C/C++语言的优点，但去掉了其影响程序健壮性的部分（如指针、内存的申请与释放等），提供了一个相对安全的内存管理和访问机制。</p></li> <li><p><strong>安全性高：</strong></p> <p>Java适合于网络/分布式环境，需要提供一个安全机制以防恶意代码的攻击。如：<code>安全防范机制</code>（ClassLoader类加载器），可以分配不同的命名空间以防替代本地的同名类、字节代码检查。</p></li> <li><p><strong>简单性：</strong></p> <p>Java就是C++语法的<code>简化版</code>，我们也可以将Java称之为“<code>C++--</code>”。比如：头文件，指针运算，结构，联合，操作符重载，虚基类等。</p></li> <li><p><strong>高性能：</strong></p> <ul><li><p>Java最初发展阶段，总是被人诟病“<code>性能低</code>”；客观上，高级语言运行效率总是低于低级语言的，这个无法避免。Java语言本身发展中通过虚拟机的优化提升了<code>几十倍运行效率</code>。比如，通过JIT(JUST IN TIME)即时编译技术提高运行效率。</p></li> <li><p><code>Java低性能的短腿，已经被完全解决了</code>。业界发展上，我们也看到很多C++应用转到Java开发，很多C++程序员转型为Java程序员。</p></li></ul></li></ul> <h4 id="缺点"><a href="#缺点" class="header-anchor">#</a> 缺点</h4> <ul><li><code>语法过于复杂、严谨</code>，对程序员的约束比较多，与python、php等相比入门较难。但是一旦学会了，就业岗位需求量大，而且<code>薪资待遇节节攀升</code>。</li> <li>一般适用于大型网站开发，<code>整个架构会比较重</code>，对于初创公司开发和维护人员的成本比较高（即薪资高），选择用Java语言开发网站或应用系统的需要一定的经济实力。</li> <li><code>并非适用于所有领域</code>。比如，Objective C、Swift在iOS设备上就有着无可取代的地位。浏览器中的处理几乎完全由JavaScript掌控。Windows程序通常都用C++或C#编写。Java在服务器端编程和跨平台客户端应用领域则很有优势。</li></ul> <h3 id="jvm功能说明"><a href="#jvm功能说明" class="header-anchor">#</a> JVM功能说明</h3> <p><strong>JVM</strong>（<code>J</code>ava <code>V</code>irtual <code>M</code>achine ，Java虚拟机）：是一个虚拟的计算机，是Java程序的运行环境。JVM具有指令集并使用不同的存储区域，负责执行指令，管理数据、内存、寄存器。</p> <p><img alt="" data-src="/images/java/core/image-20220310165805739.png" loading="lazy" class="lazy"></p> <h4 id="功能1-实现java程序的跨平台性"><a href="#功能1-实现java程序的跨平台性" class="header-anchor">#</a> 功能1：实现Java程序的跨平台性</h4> <p>我们编写的Java代码，都运行在<strong>JVM</strong> 之上。正是因为有了JVM，才使得Java程序具备了跨平台性。</p> <h4 id="功能2-自动内存管理-内存分配、内存回收"><a href="#功能2-自动内存管理-内存分配、内存回收" class="header-anchor">#</a> 功能2：自动内存管理(内存分配、内存回收)</h4> <ul><li>Java程序在运行过程中，涉及到运算的<code>数据的分配</code>、<code>存储</code>等都由JVM来完成</li> <li>Java消除了程序员回收无用内存空间的职责。提供了一种系统级线程跟踪存储空间的分配情况，在内存空间达到相应阈值时，检查并释放可被释放的存储器空间。</li> <li>GC的自动回收，提高了内存空间的利用效率，也提高了编程人员的效率，很大程度上<code>减少了</code>因为没有释放空间而导致的<code>内存泄漏</code>。</li></ul> <blockquote><p>面试题：</p> <p>Java程序还会出现内存溢出和内存泄漏问题吗？  Yes!</p></blockquote></div> <!----> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/YiShanQingF/LearningNotes/edit/master/docs/md/java/core/HelloJava.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">2023/3/10</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/md/java/core/Java-基础-变量.html">
+          Java-基础-变量
+        </a>
+        →
+      </span></p></div> </main></div> <aside class="page-sidebar"> <div class="page-side-toolbar"><div class="option-box-toc-fixed"><div class="toc-container-sidebar"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:650px"><div style="font-weight:bold;text-align:center;">Hello Java</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/md/java/core/HelloJava.html#java语言概述" class="toc-sidebar-link">Java语言概述</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#java-概述" class="toc-sidebar-link">Java 概述</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#java-语言间史" class="toc-sidebar-link">Java 语言间史</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#java-之父" class="toc-sidebar-link">Java 之父</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#公司八卦" class="toc-sidebar-link">公司八卦</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#java技术体系平台" class="toc-sidebar-link">Java技术体系平台</a></li></ul></li><li><a href="/md/java/core/HelloJava.html#java开发环境搭建" class="toc-sidebar-link">Java开发环境搭建</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#什么是jdk、jre" class="toc-sidebar-link">什么是JDK、JRE</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#jdk版本选择" class="toc-sidebar-link">JDK版本选择</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#jdk的下载" class="toc-sidebar-link">JDK的下载</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#配置path环境变量" class="toc-sidebar-link">配置path环境变量</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#jdk17配置方案-自动配置" class="toc-sidebar-link">JDK17配置方案：自动配置</a></li></ul></li><li><a href="/md/java/core/HelloJava.html#java-api文档" class="toc-sidebar-link">Java API文档</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/java/core/HelloJava.html#java核心机制-jvm" class="toc-sidebar-link">Java核心机制：JVM</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#java语言的优缺点" class="toc-sidebar-link">Java语言的优缺点</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#jvm功能说明" class="toc-sidebar-link">JVM功能说明</a></li></ul></li></ul></div></div></div></div></div> <div class="option-box-toc-over"><img src="/images/system/toc.png" class="nozoom"> <span class="show-txt">目录</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><div style="font-weight:bold;text-align:center;">Hello Java</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/md/java/core/HelloJava.html#java语言概述" class="toc-sidebar-link">Java语言概述</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#java-概述" class="toc-sidebar-link">Java 概述</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#java-语言间史" class="toc-sidebar-link">Java 语言间史</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#java-之父" class="toc-sidebar-link">Java 之父</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#公司八卦" class="toc-sidebar-link">公司八卦</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#java技术体系平台" class="toc-sidebar-link">Java技术体系平台</a></li></ul></li><li><a href="/md/java/core/HelloJava.html#java开发环境搭建" class="toc-sidebar-link">Java开发环境搭建</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#什么是jdk、jre" class="toc-sidebar-link">什么是JDK、JRE</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#jdk版本选择" class="toc-sidebar-link">JDK版本选择</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#jdk的下载" class="toc-sidebar-link">JDK的下载</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#配置path环境变量" class="toc-sidebar-link">配置path环境变量</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#jdk17配置方案-自动配置" class="toc-sidebar-link">JDK17配置方案：自动配置</a></li></ul></li><li><a href="/md/java/core/HelloJava.html#java-api文档" class="toc-sidebar-link">Java API文档</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/java/core/HelloJava.html#java核心机制-jvm" class="toc-sidebar-link">Java核心机制：JVM</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#java语言的优缺点" class="toc-sidebar-link">Java语言的优缺点</a></li><li class="toc-sidebar-sub-header"><a href="/md/java/core/HelloJava.html#jvm功能说明" class="toc-sidebar-link">JVM功能说明</a></li></ul></li></ul></div></div></div></div></div> <div class="option-box"><img src="/images/system/wechat.png" class="nozoom"> <span class="show-txt">手机看</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="text-align:center"><span style="font-size:0.9rem">微信扫一扫</span> <img height="180px" src="https://api.qrserver.com/v1/create-qr-code/?data=http://zhufj.com/md/java/core/HelloJava.html" style="margin:10px;">
+              可以<b>手机看</b>或分享至<b>朋友圈</b></div></div></div></div> <div class="option-box"><a title="点击切换全屏" style="text-align:center;padding-left:2px;"><img src="/images/system/full.png" width="30px" class="nozoom"> <span style="color:gray;font-size:11px;font-weight:400;">全屏看</span></a></div> <div class="option-box"><img src="/images/system/toggle.png" width="30px" class="nozoom"> <span class="show-txt">左栏</span></div> <div class="option-box"><img src="/images/system/download.png" width="25px" class="nozoom"> <span class="show-txt">下资料</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="text-align:center"><span style="font-size:0.8rem;font-weight:bold;">扫描公众号，回复<span style="color:red;">“1024”</span>下载<span style="color:red;">100GB+</span>大学到毕业分阶段学习技术资料、PDF书籍、实战项目、简历模板等「无任何套路」</span> <img src="/images/personal/qrcode.jpg" height="180px" style="margin:10px;"> <b>公众号:</b> BJCoder
+            </div></div></div></div> <!----> <div title="Java-基础-变量" class="option-box" style="padding-left:2px;text-align:center;"><a href="/md/java/core/Java-基础-变量.html"><img src="/images/system/next2.png" width="30px" class="nozoom"> <span class="show-txt">下一篇</span></a></div></div>  <div class="page-side-sitemap"><div class="option-box"><img src="/images/system/sitemap.png" class="nozoom img"> <span class="show-txt">站点图</span> <div class="sitemap-container"><h4>站点导航图</h4> <table class="sitemap-table"><tr><td nowrap="nowrap"><div class="sitemap-col-group">常用搜索</div></td> <td><div class="sitemap-col-item"><a href="http://www.baidu.com/" target="_blank" title="百度">  
+          百度
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="http://www.google.com/" target="_blank" title="Google">  
+          Google
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="http://www.bing.com/" target="_blank" title="Bing">  
+          Bing
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://github.com" target="_blank" title="Github">  
+          Github
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://www.programcreek.com/java-api-examples/index.php" target="_blank" title="搜代码">  
+          搜代码
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div></td> <!----></tr><tr><td nowrap="nowrap"><div class="sitemap-col-group">技术社区</div></td> <td><div class="sitemap-col-item"><a href="http://www.csdn.net/" target="_blank" title="CDSN">  
+          CDSN
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="http://www.cnblogs.com/" target="_blank" title="博客园">  
+          博客园
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://www.oschina.net" target="_blank" title="OSChina">  
+          OSChina
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://segmentfault.com/" target="_blank" title="思否">  
+          思否
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://juejin.im" target="_blank" title="掘金">  
+          掘金
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://www.linuxidc.com/" target="_blank" title="Linux公社">  
+          Linux公社
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://www.ibm.com/developerworks/cn/" target="_blank" title="IBM 开发者">  
+          IBM 开发者
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://stackoverflow.com" target="_blank" title="StackOverflow">  
+          StackOverflow
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div></td> <!----></tr></table></div></div></div> <!----> </aside></div><div class="global-ui"><div class="pay-read-more-wrap" style="display:none;position:absolute;bottom:0px;z-index:9999;width:100%;margin-top:-100px;font-family:PingFangSC-Regular, sans-serif;"><div id="pay-read-more-mask" style="position: relative; height: 200px; background: -webkit-gradient(linear, 0 0%, 0 100%, from(rgba(255, 255, 255, 0)), to(rgb(255, 255, 255)));"></div> <a id="pay-read-more-btn" target="_blank" style="position: absolute; left: 50%; top: 70%; bottom: 30px; transform: translate(-50%, -50%); width: 160px; height: 36px; line-height: 36px; font-size: 15px; text-align: center; border: 1px solid rgb(222, 104, 109); color: rgb(222, 104, 109); background: rgb(255, 255, 255); cursor: pointer; border-radius: 6px;">付费阅读</a></div></div></div>
+    <script src="/assets/js/cg-styles.js?v=1722145213052" defer></script><script src="/assets/js/cg-4.js?v=1722145213052" defer></script><script src="/assets/js/cg-51.js?v=1722145213052" defer></script><script src="/assets/js/cg-2.js?v=1722145213052" defer></script><script src="/assets/js/cg-25.js?v=1722145213052" defer></script><script src="/assets/js/cg-app.js?v=1722145213052" defer></script>
+  </body>
+</html>

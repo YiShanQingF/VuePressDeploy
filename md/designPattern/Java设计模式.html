@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Java 设计模式 | 学习笔记</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/favicon.ico">
+    <script charset="utf-8" async="async" src="/js/jquery.min.js"></script>
+    <script charset="utf-8" async="async" src="/js/global.js"></script>
+    <script charset="utf-8" async="async" src="/js/fingerprint2.min.js"></script>
+    <script>
+              var _hmt = _hmt || [];
+              (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?0b31b4c146bf7126aed5009e1a4a11c8";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+              })();
+            </script>
+    <meta name="description" content="记录学习笔记、项目心得、趟过的雷、踩过的坑">
+    <meta property="article:modified_time" content="2024-03-14T02:44:24.000Z">
+    <meta property="og:title" content="Java 设计模式">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">
+    <meta name="twitter:title" content="Java 设计模式">
+    <meta name="twitter:url" content="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="all">
+    <meta name="author" content="青山">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta name="keywords" content="学习笔记, DDD抽奖系统，数据结构，重学Java设计模式, 字节码编程, 中间件, 手写Spring, 手写MyBatis，Java基础, 面经手册，面试题，API网关，SpringBoot Stater">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="preload" href="/assets/css/0.styles.4e2267cf.css" as="style"><link rel="preload" href="/assets/css/styles.css?v=1722145213052" as="style"><link rel="preload" href="/assets/js/cg-styles.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-app.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-4.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-40.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-2.js?v=1722145213052" as="script"><link rel="preload" href="/assets/js/cg-25.js?v=1722145213052" as="script">
+    <link rel="stylesheet" href="/assets/css/0.styles.4e2267cf.css"><link rel="stylesheet" href="/assets/css/styles.css?v=1722145213052">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">学习笔记</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/md/nav/nav.html" class="nav-link">
+  导航
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="读书&amp;笔记" class="dropdown-title"><span class="title">读书&amp;笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/book/Java Multithread Programming/Java多线程编程核心技术（第3版）.html" class="nav-link">
+  Java多线程编程核心技术（第3版）
+</a></li><li class="dropdown-subitem"><a href="/md/book/OnJava中文版基础/第一章.html" class="nav-link">
+  On Java 中文版 基础
+</a></li><li class="dropdown-subitem"><a href="/md/sad/必修2-计算机基础.html" class="nav-link">
+  架构师
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java 基础
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/HelloJava.html" class="nav-link">
+  Hello Java
+</a></li><li class="dropdown-subitem"><a href="/md/java/core/Java-基础-变量.html" class="nav-link">
+  Java 基础
+</a></li><li class="dropdown-subitem"><a href="/md/java/core/Java-基础-面向对象.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>
+          JVM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/jvm/JVM-基础-类字节码详解.html" class="nav-link">
+  JVM 基础
+</a></li><li class="dropdown-subitem"><a href="/md/java/jvm/GC-Java-垃圾回收基础知识.html" class="nav-link">
+  GC
+</a></li></ul></li><li class="dropdown-item"><h4>
+          JUC
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/juc/JUC并发编程.html" class="nav-link">
+  JUC并发编程
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Boot
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Cloud
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Security
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Session
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Data
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Batch
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java框架" class="dropdown-title"><span class="title">Java框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Mybatis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          MybatisPlus
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          日志框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          缓存
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          连接池
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ShardingSphere
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式&amp;算法" class="dropdown-title"><span class="title">设计模式&amp;算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/参考资料.html" class="nav-link">
+  参考资料
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/设计模式七大原则.html" class="nav-link">
+  设计模式七大原则
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/UML图.html" class="nav-link">
+  UML图
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/Java设计模式.html" class="nav-link">
+  Java设计模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Oracle
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          MySQL
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Redis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Elasticsearch
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Kafka
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Mongodb
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Tomcat
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          RabbitMQ
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-简介.html" class="nav-link">
+  Docker 简介
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-安装.html" class="nav-link">
+  Docker 安装
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-常用命令.html" class="nav-link">
+  Docker 常用命令
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-镜像.html" class="nav-link">
+  Docker 镜像
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-数据卷.html" class="nav-link">
+  Docker 数据卷
+</a></li></ul></li><li class="dropdown-item"><h4>
+          K8s
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Maven
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Gradle
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Idea
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/idea/插件.html" class="nav-link">
+  插件
+</a></li><li class="dropdown-subitem"><a href="/md/idea/常用设置.html" class="nav-link">
+  常用设置
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="环境部署" class="dropdown-title"><span class="title">环境部署</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          MySQL
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/db/mysql/MySQL-安装.html" class="nav-link">
+  MySQL 安装
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-安装.html" class="nav-link">
+  Docker 安装
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="源码仓库" class="dropdown-title"><span class="title">源码仓库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/YiShanQingF/LearningNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  开源项目 - Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/zhufanjia/LearningNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  开源项目 - Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/md/nav/nav.html" class="nav-link">
+  导航
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="读书&amp;笔记" class="dropdown-title"><span class="title">读书&amp;笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/book/Java Multithread Programming/Java多线程编程核心技术（第3版）.html" class="nav-link">
+  Java多线程编程核心技术（第3版）
+</a></li><li class="dropdown-subitem"><a href="/md/book/OnJava中文版基础/第一章.html" class="nav-link">
+  On Java 中文版 基础
+</a></li><li class="dropdown-subitem"><a href="/md/sad/必修2-计算机基础.html" class="nav-link">
+  架构师
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java" class="dropdown-title"><span class="title">Java</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Java 基础
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/core/HelloJava.html" class="nav-link">
+  Hello Java
+</a></li><li class="dropdown-subitem"><a href="/md/java/core/Java-基础-变量.html" class="nav-link">
+  Java 基础
+</a></li><li class="dropdown-subitem"><a href="/md/java/core/Java-基础-面向对象.html" class="nav-link">
+  Java 面向对象
+</a></li></ul></li><li class="dropdown-item"><h4>
+          JVM
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/jvm/JVM-基础-类字节码详解.html" class="nav-link">
+  JVM 基础
+</a></li><li class="dropdown-subitem"><a href="/md/java/jvm/GC-Java-垃圾回收基础知识.html" class="nav-link">
+  GC
+</a></li></ul></li><li class="dropdown-item"><h4>
+          JUC
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/java/juc/JUC并发编程.html" class="nav-link">
+  JUC并发编程
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Spring" class="dropdown-title"><span class="title">Spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Spring
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Boot
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Cloud
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Security
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Session
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Data
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Spring Batch
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Java框架" class="dropdown-title"><span class="title">Java框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Mybatis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          MybatisPlus
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          日志框架
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          缓存
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          连接池
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          ShardingSphere
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式&amp;算法" class="dropdown-title"><span class="title">设计模式&amp;算法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          设计模式
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/参考资料.html" class="nav-link">
+  参考资料
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/设计模式七大原则.html" class="nav-link">
+  设计模式七大原则
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/UML图.html" class="nav-link">
+  UML图
+</a></li><li class="dropdown-subitem"><a href="/md/designPattern/Java设计模式.html" class="nav-link">
+  Java设计模式
+</a></li></ul></li><li class="dropdown-item"><h4>
+          算法
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="数据库" class="dropdown-title"><span class="title">数据库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Oracle
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          MySQL
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Redis
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Elasticsearch
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Kafka
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Mongodb
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="中间件" class="dropdown-title"><span class="title">中间件</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Tomcat
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Nginx
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          RabbitMQ
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发工具" class="dropdown-title"><span class="title">开发工具</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-简介.html" class="nav-link">
+  Docker 简介
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-安装.html" class="nav-link">
+  Docker 安装
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-常用命令.html" class="nav-link">
+  Docker 常用命令
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-镜像.html" class="nav-link">
+  Docker 镜像
+</a></li><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-数据卷.html" class="nav-link">
+  Docker 数据卷
+</a></li></ul></li><li class="dropdown-item"><h4>
+          K8s
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Git
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Maven
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Gradle
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/designPattern/.html" class="nav-link">
+  搬砖中。。。
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Idea
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/idea/插件.html" class="nav-link">
+  插件
+</a></li><li class="dropdown-subitem"><a href="/md/idea/常用设置.html" class="nav-link">
+  常用设置
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="环境部署" class="dropdown-title"><span class="title">环境部署</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>
+          MySQL
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/db/mysql/MySQL-安装.html" class="nav-link">
+  MySQL 安装
+</a></li></ul></li><li class="dropdown-item"><h4>
+          Docker
+        </h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/md/devops/docker/Docker-安装.html" class="nav-link">
+  Docker 安装
+</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="源码仓库" class="dropdown-title"><span class="title">源码仓库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/YiShanQingF/LearningNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  开源项目 - Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://gitee.com/zhufanjia/LearningNotes" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  开源项目 - Gitee
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>设计模式</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/md/designPattern/参考资料.html" class="sidebar-link">参考资料</a></li><li><a href="/md/designPattern/设计模式七大原则.html" class="sidebar-link">设计模式七大原则</a></li><li><a href="/md/designPattern/UML图.html" class="sidebar-link">UML图</a></li><li><a href="/md/designPattern/Java设计模式.html" class="active sidebar-link">Java 设计模式</a></li></ul></section></li></ul> </aside> <div><main class="page"> <div class="theme-default-content content__default"><h1 id="java-设计模式"><a href="#java-设计模式" class="header-anchor">#</a> Java 设计模式</h1> <h2 id="设计模式介绍"><a href="#设计模式介绍" class="header-anchor">#</a> 设计模式介绍</h2> <ul><li>设计模式是在面对同类软件工程设计问题所总结出来的有用的经验，模式不是代码，而是某类问题的通用解决方案，设计模式（Design pattern）代表了<strong>最佳的实</strong>践。这些解决方案是众多软件开发人员经过相当长的一段时间的试验和错误总结出来的。</li> <li>设计模式的本质提高 软件的维护性，通用性和扩展性，并降低软件的复杂度。</li> <li>&lt;&lt;设计模式&gt;&gt; 是经典的书，作者是 Erich Gamma、Richard Helm、Ralph Johnson 和 John Vlissides Design（俗称 “四人组 GOF”）</li> <li>设计模式并不局限于某种语言，java，php，c++ 都有设计模式.</li></ul> <h2 id="设计模式类型"><a href="#设计模式类型" class="header-anchor">#</a> 设计模式类型</h2> <h3 id="创建型模式"><a href="#创建型模式" class="header-anchor">#</a> 创建型模式</h3> <ul><li>单例模式</li> <li>抽象工厂模式</li> <li>原型模式</li> <li>建造者模式</li> <li>工厂模式</li></ul> <h3 id="结构型模式"><a href="#结构型模式" class="header-anchor">#</a> 结构型模式</h3> <ul><li>适配器模式</li> <li>桥接模式</li> <li>装饰模式</li> <li>组合模式</li> <li>外观模式</li> <li>享元模式</li> <li>代理模式</li></ul> <h3 id="行为型模式"><a href="#行为型模式" class="header-anchor">#</a> 行为型模式</h3> <ul><li>模版方法模式</li> <li>命令模式</li> <li>访问者模式</li> <li>迭代器模式</li> <li>观察者模式</li> <li>中介者模式</li> <li>备忘录模式</li> <li>解释器模式（Interpreter模式）</li> <li>状态模式</li> <li>策略模式</li> <li>职责链模式(责任链模式)</li></ul> <hr> <h2 id="单例模式"><a href="#单例模式" class="header-anchor">#</a> 单例模式</h2> <blockquote><p>所谓类的单例设计模式，就是采取一定的方法保证在整个的软件系统中，对某个类<strong>只能存在一个对象实例</strong>，并且该类只提供一个取得其对象实例的方法(静态方法)。</p></blockquote> <h3 id="单例模式有八种方式"><a href="#单例模式有八种方式" class="header-anchor">#</a> 单例模式有八种方式</h3> <ol><li>饿汉式(静态常量)</li> <li>饿汉式（静态代码块）</li> <li>懒汉式(线程不安全)</li> <li>懒汉式(线程安全，同步方法)</li> <li>懒汉式(线程安全，同步代码块)</li> <li>双重检查</li> <li>静态内部类</li> <li>枚举</li></ol> <h3 id="_1-饿汉式-静态常量"><a href="#_1-饿汉式-静态常量" class="header-anchor">#</a> 1.饿汉式（静态常量）</h3> <p><strong>步骤如下：</strong></p> <ol><li>构造器私有化 (防止 new )</li> <li>类的内部创建对象</li> <li>向外暴露一个静态的公共方法。getInstance</li></ol> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//饿汉式(静态变量)</span>
+<span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>
+	<span class="token comment">//1. 构造器私有化, 外部能new</span>
+	<span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">//2.本类内部创建对象实例</span>
+	<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//3. 提供一个公有的静态方法，返回实例对象</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p><strong>优缺点：</strong></p> <ol><li>优点：这种写法比较简单，就是在类装载的时候就完成实例化。避免了线程同步问题。</li> <li>缺点：在类装载的时候就完成实例化，没有达到Lazy Loading的效果。如果从始至终从未使用过这个实例，则会造成内存的浪费</li> <li>这种方式基于classloder机制避免了多线程的同步问题，不过，instance在类装载时就实例化，在单例模式中大多数都是调用getInstance方法，但是导致类装载的原因有很多种，因此不能确定有其他的方式（或者其他的静态方法）导致类装载，这时候初始化instance就没有达到lazy loading的效果</li> <li>结论：这种单例模式可用，可能造成内存浪费</li></ol> <h3 id="_2-饿汉式-静态代码块"><a href="#_2-饿汉式-静态代码块" class="header-anchor">#</a> 2.饿汉式（静态代码块）</h3> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">//饿汉式(静态变量)</span>
+<span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>
+	<span class="token comment">//1. 构造器私有化, 外部能new</span>
+	<span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">//2.本类内部创建对象实例</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Singleton</span> instance<span class="token punctuation">;</span>
+	<span class="token keyword">static</span> <span class="token punctuation">{</span> <span class="token comment">// 在静态代码块中，创建单例对象</span>
+		instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">//3. 提供一个公有的静态方法，返回实例对象</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p><strong>优缺点：</strong></p> <ol><li>这种方式和上面的方式其实类似，只不过将类实例化的过程放在了静态代码块中，也是在类装载的时候，就执行静态代码块中的代码，初始化类的实例。优缺点和上面是一样的。</li> <li>结论：这种单例模式可用，但是可能造成内存浪费</li></ol> <h3 id="_3-懒汉式-线程不安全"><a href="#_3-懒汉式-线程不安全" class="header-anchor">#</a> 3.懒汉式(线程不安全)</h3> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> instance<span class="token punctuation">;</span>
+	<span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        
+    <span class="token punctuation">}</span>
+	<span class="token comment">//提供一个静态的公有方法，当使用到该方法时，才去创建 instance</span>
+	<span class="token comment">//即懒汉式</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br></div></div><p><strong>优缺点：</strong></p> <ul><li>起到了Lazy Loading的效果，但是只能在单线程下使用。</li> <li>如果在多线程下，一个线程进入了if (singleton == null)判断语句块，还未来得及往下执行，另一个线程也通过了这个判断语句，这时便会产生多个实例。所以在多线程环境下不可使用这种方式</li> <li>结论：在实际开发中，不要使用这种方式.</li></ul> <h3 id="_4-懒汉式-线程安全-同步方法"><a href="#_4-懒汉式-线程安全-同步方法" class="header-anchor">#</a> 4.懒汉式(线程安全，同步方法)</h3> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">// 懒汉式(线程安全，同步方法)</span>
+<span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> instance<span class="token punctuation">;</span>
+    
+    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    
+    <span class="token comment">//提供一个静态的公有方法，加入同步处理的代码，解决线程安全问题</span>
+    <span class="token comment">//即懒汉式</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">synchronized</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p><strong>优缺点：</strong></p> <ul><li>解决了线程不安全问题</li> <li>效率太低了，每个线程在想获得类的实例时候，执行getInstance()方法都要进行同步。而其实这个方法只执行一次实例化代码就够了，后面的想获得该类实例，直接return就行了。方法进行同步效率太低</li> <li>结论：在实际开发中，不推荐使用这种方式</li></ul> <h3 id="_5-懒汉式-线程不安全-同步代码块"><a href="#_5-懒汉式-线程不安全-同步代码块" class="header-anchor">#</a> 5.懒汉式(线程不安全，同步代码块)</h3> <p><strong>优缺点：</strong></p> <ul><li>这种方式，本意是想对第四种实现方式的改进，因为前面同步方法效率太低，改为同步产生实例化的的代码块</li> <li>但是这种同步并不能起到线程同步的作用 。跟第3种实现方式遇到的情形一致，假如一个线程进入了if (singleton == null)判断语句块，还未来得及往下执行，另一个线程也通过了这个判断语句，这时便会产生多个实例</li> <li>结论：在 实际开发中， 不能使用这种方式</li></ul> <h3 id="_6-双重检查"><a href="#_6-双重检查" class="header-anchor">#</a> 6.双重检查</h3> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">// 懒汉式(线程安全，同步方法)</span>
+<span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">volatile</span> <span class="token class-name">Singleton</span> instance<span class="token punctuation">;</span>
+    
+    <span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    
+    <span class="token comment">//提供一个静态的公有方法，加入双重检查代码，解决线程安全问题, 同时解决懒加载问题</span>
+    <span class="token comment">//同时保证了效率, 推荐使用</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token class-name">Singleton</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p><strong>优缺点：</strong></p> <ul><li>Double-Check概念是多线程开发中常使用到的，如代码中所示，我们进行了两次if (singleton == null)检查，这样就可以保证线程安全了。</li> <li>这样，实例化代码只用执行一次，后面再次访问时，判断if (singleton == null)，直接return实例化对象，也避免的反复进行方法同步.</li> <li>线程安全；延迟加载；效率较高</li> <li>结论：在实际开发中，推荐使用这种单例设计模式</li></ul> <h3 id="_7-静态内部类"><a href="#_7-静态内部类" class="header-anchor">#</a> 7.静态内部类</h3> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">// 静态内部类完成， 推荐使用</span>
+<span class="token keyword">class</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">volatile</span> <span class="token class-name">Singleton</span> instance<span class="token punctuation">;</span>
+	
+	<span class="token comment">//构造器私有化</span>
+	<span class="token keyword">private</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+	
+	<span class="token comment">//写一个静态内部类,该类中有一个静态属性 Singleton</span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">SingletonInstance</span> <span class="token punctuation">{</span>
+		<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token class-name">Singleton</span> <span class="token constant">INSTANCE</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+	<span class="token punctuation">}</span>
+	
+	<span class="token comment">//提供一个静态的公有方法，直接返回SingletonInstance.INSTANCE</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token class-name">SingletonInstance</span><span class="token punctuation">.</span><span class="token constant">INSTANCE</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p><strong>优缺点：</strong></p> <ul><li>这种方式采用了类装载的机制来保证初始化实例时只有一个线程。</li> <li>静态内部类方式在Singleton类被装载时并不会立即实例化，而是在需要实例化时，调用getInstance方法，才会装载SingletonInstance类，从而完成Singleton的实例化。</li> <li>类的静态属性只会在第一次加载类的时候初始化，所以在这里，JVM帮助我们保证了线程的安全性，在类进行初始化时，别的线程是无法进入的。</li> <li>优点：避免了 线程不安全，利用静态内部类特点实现延迟加载，效率高</li> <li>结论：推荐使用.</li></ul> <h3 id="_8-枚举"><a href="#_8-枚举" class="header-anchor">#</a> 8.枚举</h3> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SingletonTest08</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Singleton</span> instance <span class="token operator">=</span> <span class="token class-name">Singleton</span><span class="token punctuation">.</span><span class="token constant">INSTANCE</span><span class="token punctuation">;</span>
+        <span class="token class-name">Singleton</span> instance2 <span class="token operator">=</span> <span class="token class-name">Singleton</span><span class="token punctuation">.</span><span class="token constant">INSTANCE</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>instance <span class="token operator">==</span> instance2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>instance2<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        instance<span class="token punctuation">.</span><span class="token function">sayOK</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//使用枚举，可以实现单例, 推荐</span>
+<span class="token keyword">enum</span> <span class="token class-name">Singleton</span> <span class="token punctuation">{</span>
+    <span class="token constant">INSTANCE</span><span class="token punctuation">;</span> <span class="token comment">//属性</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sayOK</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;ok~&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><p><strong>优缺点：</strong></p> <ul><li>这借助JDK1.5中添加的枚举来实现单例模式。不仅能避免多线程同步问题，而且还能防止反序列化重新创建新的对象。</li> <li>这种方式是Effective Java作者Josh Bloch 提倡的方式</li> <li>结论：推荐使用</li></ul> <h3 id="单例模式在jdk-应用的源码分析"><a href="#单例模式在jdk-应用的源码分析" class="header-anchor">#</a> 单例模式在JDK 应用的源码分析</h3> <ul><li>我们JDK中，java.lang.Runtime就是经典的单例模式(饿汉式)</li></ul> <p><strong>单例模式注意事项和细节说明</strong></p> <ul><li>单例模式保证了系统内存中该类只存在一个对象，节省了系统资源，对于一些需要频繁创建销毁的对象，使用单例模式可以提高系统性能</li> <li>当想实例化一个单例类的时候，必须要记住使用相应的获取对象的方法，而不是使用new</li> <li>单例模式使用的场景：需要频繁的进行创建和销毁的对象、创建对象时耗时过多或耗费资源过多(即：重量级对象)，但又经常用到的对象、工具类对象、频繁访问数据库或文件的对象(比如数据源、session工厂等)</li></ul> <hr> <h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="header-anchor">#</a> 抽象工厂模式</h2> <h3 id="简单工厂模式"><a href="#简单工厂模式" class="header-anchor">#</a> 简单工厂模式</h3> <ul><li>简单工厂模式是属于创建型模式，是工厂模式的一种。 简单工厂模式是由一个工厂对象决定创建出哪一种产品类的实例。简单工厂模式是工厂模式家族中最简单实用的模式</li> <li>简单工厂模式：定义了一个创建对象的类，由这个类来封装实例化对象的行为(代码)</li> <li>在软件开发中，当我们会用到大量的创建某种、某类或者某批对象时，就会使用到工厂模式.</li></ul> <h3 id="工厂方法模式"><a href="#工厂方法模式" class="header-anchor">#</a> 工厂方法模式</h3> <ul><li>定义了一个创建对象的抽象方法，由子类决定要实例化的类。工厂方法模式将 对象的实例化推迟到子类。</li></ul> <h3 id="抽象工厂模式-2"><a href="#抽象工厂模式-2" class="header-anchor">#</a> 抽象工厂模式</h3> <ul><li>抽象工厂模式：定义了一个interface用于创建相关或有依赖关系的对象簇，而无需指明具体的类</li> <li>抽象工厂模式可以将 简单工厂模式和工厂方法模式进行整合。</li> <li>从设计层面看，抽象工厂模式就是对简单工厂模式的改进(或者称为进一步的抽象)。</li> <li>将工厂抽象成两层，AbsFactory(抽象工厂) 和具体实现的工厂子类。可以根据创建对象类型使用对应的工厂子类。这样将单个的简单工厂类变成了工厂簇，更利于代码的维护和扩展。</li></ul> <h3 id="工厂模式小结"><a href="#工厂模式小结" class="header-anchor">#</a> 工厂模式小结</h3> <ul><li>工厂模式的意义：将实例化对象的代码提取出来，放到一个类中统一管理和维护，达到和主项目的依赖关系的解耦。从而提高项目的扩展和维护性。</li> <li>三种工厂模式 (简单工厂模式、工厂方法模式、抽象工厂模式)</li> <li>设计模式的依赖抽象原则</li></ul> <blockquote><p>创建对象实例时，不要直接new类, 而是把这个new类的动作放在一个工厂的方法中，并返回。有的书上说，变量不要直接持有具体类的引用。</p> <p>不要让类继承具体类，而是继承抽象类或者是实现interface(接口)</p> <p>不要覆盖基类中已经实现的方法。</p></blockquote> <hr> <h2 id="原型模式"><a href="#原型模式" class="header-anchor">#</a> 原型模式</h2> <hr> <h2 id="建造者模式"><a href="#建造者模式" class="header-anchor">#</a> 建造者模式</h2> <hr> <h2 id="工厂模式"><a href="#工厂模式" class="header-anchor">#</a> 工厂模式</h2> <hr> <h2 id="适配器模式"><a href="#适配器模式" class="header-anchor">#</a> 适配器模式</h2> <hr> <h2 id="桥接模式"><a href="#桥接模式" class="header-anchor">#</a> 桥接模式</h2> <hr> <h2 id="装饰模式"><a href="#装饰模式" class="header-anchor">#</a> 装饰模式</h2> <hr> <h2 id="组合模式"><a href="#组合模式" class="header-anchor">#</a> 组合模式</h2> <hr> <h2 id="外观模式"><a href="#外观模式" class="header-anchor">#</a> 外观模式</h2> <hr> <h2 id="享元模式"><a href="#享元模式" class="header-anchor">#</a> 享元模式</h2> <hr> <h2 id="代理模式"><a href="#代理模式" class="header-anchor">#</a> 代理模式</h2> <hr> <h2 id="模版方法模式"><a href="#模版方法模式" class="header-anchor">#</a> 模版方法模式</h2> <hr> <h2 id="命令模式"><a href="#命令模式" class="header-anchor">#</a> 命令模式</h2> <hr> <h2 id="访问者模式"><a href="#访问者模式" class="header-anchor">#</a> 访问者模式</h2> <hr> <h2 id="迭代器模式"><a href="#迭代器模式" class="header-anchor">#</a> 迭代器模式</h2> <hr> <h2 id="观察者模式"><a href="#观察者模式" class="header-anchor">#</a> 观察者模式</h2> <hr> <h2 id="中介者模式"><a href="#中介者模式" class="header-anchor">#</a> 中介者模式</h2> <hr> <h2 id="备忘录模式"><a href="#备忘录模式" class="header-anchor">#</a> 备忘录模式</h2> <hr> <h2 id="解释器模式-interpreter模式"><a href="#解释器模式-interpreter模式" class="header-anchor">#</a> 解释器模式（Interpreter模式）</h2> <hr> <h2 id="状态模式"><a href="#状态模式" class="header-anchor">#</a> 状态模式</h2> <hr> <h2 id="策略模式"><a href="#策略模式" class="header-anchor">#</a> 策略模式</h2> <hr> <h2 id="职责链模式-责任链模式"><a href="#职责链模式-责任链模式" class="header-anchor">#</a> 职责链模式(责任链模式)</h2></div> <!----> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/YiShanQingF/LearningNotes/edit/master/docs/md/designPattern/Java设计模式.md" target="_blank" rel="noopener noreferrer">在 GitHub 上编辑此页</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">2024/3/14</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/md/designPattern/UML图.html" class="prev">
+          UML图
+        </a></span> <!----></p></div> </main></div> <aside class="page-sidebar"> <div class="page-side-toolbar"><div class="option-box-toc-fixed"><div class="toc-container-sidebar"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:650px"><div style="font-weight:bold;text-align:center;">Java 设计模式</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#设计模式介绍" class="toc-sidebar-link">设计模式介绍</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#设计模式类型" class="toc-sidebar-link">设计模式类型</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#创建型模式" class="toc-sidebar-link">创建型模式</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#结构型模式" class="toc-sidebar-link">结构型模式</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#行为型模式" class="toc-sidebar-link">行为型模式</a></li></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#单例模式" class="toc-sidebar-link">单例模式</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#单例模式有八种方式" class="toc-sidebar-link">单例模式有八种方式</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_1-饿汉式-静态常量" class="toc-sidebar-link">1.饿汉式（静态常量）</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_2-饿汉式-静态代码块" class="toc-sidebar-link">2.饿汉式（静态代码块）</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_3-懒汉式-线程不安全" class="toc-sidebar-link">3.懒汉式(线程不安全)</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_4-懒汉式-线程安全-同步方法" class="toc-sidebar-link">4.懒汉式(线程安全，同步方法)</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_5-懒汉式-线程不安全-同步代码块" class="toc-sidebar-link">5.懒汉式(线程不安全，同步代码块)</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_6-双重检查" class="toc-sidebar-link">6.双重检查</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_7-静态内部类" class="toc-sidebar-link">7.静态内部类</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_8-枚举" class="toc-sidebar-link">8.枚举</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#单例模式在jdk-应用的源码分析" class="toc-sidebar-link">单例模式在JDK 应用的源码分析</a></li></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#抽象工厂模式" class="toc-sidebar-link">抽象工厂模式</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#简单工厂模式" class="toc-sidebar-link">简单工厂模式</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#工厂方法模式" class="toc-sidebar-link">工厂方法模式</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#抽象工厂模式-2" class="toc-sidebar-link">抽象工厂模式</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#工厂模式小结" class="toc-sidebar-link">工厂模式小结</a></li></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#原型模式" class="toc-sidebar-link">原型模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#建造者模式" class="toc-sidebar-link">建造者模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#工厂模式" class="toc-sidebar-link">工厂模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#适配器模式" class="toc-sidebar-link">适配器模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#桥接模式" class="toc-sidebar-link">桥接模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#装饰模式" class="toc-sidebar-link">装饰模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#组合模式" class="toc-sidebar-link">组合模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#外观模式" class="toc-sidebar-link">外观模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#享元模式" class="toc-sidebar-link">享元模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#代理模式" class="toc-sidebar-link">代理模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#模版方法模式" class="toc-sidebar-link">模版方法模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#命令模式" class="toc-sidebar-link">命令模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#访问者模式" class="toc-sidebar-link">访问者模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#迭代器模式" class="toc-sidebar-link">迭代器模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#观察者模式" class="toc-sidebar-link">观察者模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#中介者模式" class="toc-sidebar-link">中介者模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#备忘录模式" class="toc-sidebar-link">备忘录模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#解释器模式-interpreter模式" class="toc-sidebar-link">解释器模式（Interpreter模式）</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#状态模式" class="toc-sidebar-link">状态模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#策略模式" class="toc-sidebar-link">策略模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#职责链模式-责任链模式" class="toc-sidebar-link">职责链模式(责任链模式)</a><ul class="toc-sidebar-sub-headers"></ul></li></ul></div></div></div></div></div> <div class="option-box-toc-over"><img src="/images/system/toc.png" class="nozoom"> <span class="show-txt">目录</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="max-height:550px"><div style="font-weight:bold;text-align:center;">Java 设计模式</div> <hr> <div class="toc-box"><ul class="toc-sidebar-links"><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#设计模式介绍" class="toc-sidebar-link">设计模式介绍</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#设计模式类型" class="toc-sidebar-link">设计模式类型</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#创建型模式" class="toc-sidebar-link">创建型模式</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#结构型模式" class="toc-sidebar-link">结构型模式</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#行为型模式" class="toc-sidebar-link">行为型模式</a></li></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#单例模式" class="toc-sidebar-link">单例模式</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#单例模式有八种方式" class="toc-sidebar-link">单例模式有八种方式</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_1-饿汉式-静态常量" class="toc-sidebar-link">1.饿汉式（静态常量）</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_2-饿汉式-静态代码块" class="toc-sidebar-link">2.饿汉式（静态代码块）</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_3-懒汉式-线程不安全" class="toc-sidebar-link">3.懒汉式(线程不安全)</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_4-懒汉式-线程安全-同步方法" class="toc-sidebar-link">4.懒汉式(线程安全，同步方法)</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_5-懒汉式-线程不安全-同步代码块" class="toc-sidebar-link">5.懒汉式(线程不安全，同步代码块)</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_6-双重检查" class="toc-sidebar-link">6.双重检查</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_7-静态内部类" class="toc-sidebar-link">7.静态内部类</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#_8-枚举" class="toc-sidebar-link">8.枚举</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#单例模式在jdk-应用的源码分析" class="toc-sidebar-link">单例模式在JDK 应用的源码分析</a></li></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#抽象工厂模式" class="toc-sidebar-link">抽象工厂模式</a><ul class="toc-sidebar-sub-headers"><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#简单工厂模式" class="toc-sidebar-link">简单工厂模式</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#工厂方法模式" class="toc-sidebar-link">工厂方法模式</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#抽象工厂模式-2" class="toc-sidebar-link">抽象工厂模式</a></li><li class="toc-sidebar-sub-header"><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#工厂模式小结" class="toc-sidebar-link">工厂模式小结</a></li></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#原型模式" class="toc-sidebar-link">原型模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#建造者模式" class="toc-sidebar-link">建造者模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#工厂模式" class="toc-sidebar-link">工厂模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#适配器模式" class="toc-sidebar-link">适配器模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#桥接模式" class="toc-sidebar-link">桥接模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#装饰模式" class="toc-sidebar-link">装饰模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#组合模式" class="toc-sidebar-link">组合模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#外观模式" class="toc-sidebar-link">外观模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#享元模式" class="toc-sidebar-link">享元模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#代理模式" class="toc-sidebar-link">代理模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#模版方法模式" class="toc-sidebar-link">模版方法模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#命令模式" class="toc-sidebar-link">命令模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#访问者模式" class="toc-sidebar-link">访问者模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#迭代器模式" class="toc-sidebar-link">迭代器模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#观察者模式" class="toc-sidebar-link">观察者模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#中介者模式" class="toc-sidebar-link">中介者模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#备忘录模式" class="toc-sidebar-link">备忘录模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#解释器模式-interpreter模式" class="toc-sidebar-link">解释器模式（Interpreter模式）</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#状态模式" class="toc-sidebar-link">状态模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#策略模式" class="toc-sidebar-link">策略模式</a><ul class="toc-sidebar-sub-headers"></ul></li><li><a href="/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html#职责链模式-责任链模式" class="toc-sidebar-link">职责链模式(责任链模式)</a><ul class="toc-sidebar-sub-headers"></ul></li></ul></div></div></div></div></div> <div class="option-box"><img src="/images/system/wechat.png" class="nozoom"> <span class="show-txt">手机看</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="text-align:center"><span style="font-size:0.9rem">微信扫一扫</span> <img height="180px" src="https://api.qrserver.com/v1/create-qr-code/?data=http://zhufj.com/md/designPattern/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html" style="margin:10px;">
+              可以<b>手机看</b>或分享至<b>朋友圈</b></div></div></div></div> <div class="option-box"><a title="点击切换全屏" style="text-align:center;padding-left:2px;"><img src="/images/system/full.png" width="30px" class="nozoom"> <span style="color:gray;font-size:11px;font-weight:400;">全屏看</span></a></div> <div class="option-box"><img src="/images/system/toggle.png" width="30px" class="nozoom"> <span class="show-txt">左栏</span></div> <div class="option-box"><img src="/images/system/download.png" width="25px" class="nozoom"> <span class="show-txt">下资料</span> <div class="toc-container"><div class="pos-box"><div class="icon-arrow"></div> <div class="scroll-box" style="text-align:center"><span style="font-size:0.8rem;font-weight:bold;">扫描公众号，回复<span style="color:red;">“1024”</span>下载<span style="color:red;">100GB+</span>大学到毕业分阶段学习技术资料、PDF书籍、实战项目、简历模板等「无任何套路」</span> <img src="/images/personal/qrcode.jpg" height="180px" style="margin:10px;"> <b>公众号:</b> BJCoder
+            </div></div></div></div> <div title="UML图" class="option-box" style="padding-left:2px;text-align:center;"><a href="/md/designPattern/UML图.html"><img src="/images/system/pre2.png" width="30px" class="nozoom"> <span class="show-txt">上一篇</span></a></div> <!----></div>  <div class="page-side-sitemap"><div class="option-box"><img src="/images/system/sitemap.png" class="nozoom img"> <span class="show-txt">站点图</span> <div class="sitemap-container"><h4>站点导航图</h4> <table class="sitemap-table"><tr><td nowrap="nowrap"><div class="sitemap-col-group">常用搜索</div></td> <td><div class="sitemap-col-item"><a href="http://www.baidu.com/" target="_blank" title="百度">  
+          百度
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="http://www.google.com/" target="_blank" title="Google">  
+          Google
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="http://www.bing.com/" target="_blank" title="Bing">  
+          Bing
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://github.com" target="_blank" title="Github">  
+          Github
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://www.programcreek.com/java-api-examples/index.php" target="_blank" title="搜代码">  
+          搜代码
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div></td> <!----></tr><tr><td nowrap="nowrap"><div class="sitemap-col-group">技术社区</div></td> <td><div class="sitemap-col-item"><a href="http://www.csdn.net/" target="_blank" title="CDSN">  
+          CDSN
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="http://www.cnblogs.com/" target="_blank" title="博客园">  
+          博客园
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://www.oschina.net" target="_blank" title="OSChina">  
+          OSChina
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://segmentfault.com/" target="_blank" title="思否">  
+          思否
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://juejin.im" target="_blank" title="掘金">  
+          掘金
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://www.linuxidc.com/" target="_blank" title="Linux公社">  
+          Linux公社
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://www.ibm.com/developerworks/cn/" target="_blank" title="IBM 开发者">  
+          IBM 开发者
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="sitemap-col-item"><a href="https://stackoverflow.com" target="_blank" title="StackOverflow">  
+          StackOverflow
+          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div></td> <!----></tr></table></div></div></div> <!----> </aside></div><div class="global-ui"><div class="pay-read-more-wrap" style="display:none;position:absolute;bottom:0px;z-index:9999;width:100%;margin-top:-100px;font-family:PingFangSC-Regular, sans-serif;"><div id="pay-read-more-mask" style="position: relative; height: 200px; background: -webkit-gradient(linear, 0 0%, 0 100%, from(rgba(255, 255, 255, 0)), to(rgb(255, 255, 255)));"></div> <a id="pay-read-more-btn" target="_blank" style="position: absolute; left: 50%; top: 70%; bottom: 30px; transform: translate(-50%, -50%); width: 160px; height: 36px; line-height: 36px; font-size: 15px; text-align: center; border: 1px solid rgb(222, 104, 109); color: rgb(222, 104, 109); background: rgb(255, 255, 255); cursor: pointer; border-radius: 6px;">付费阅读</a></div></div></div>
+    <script src="/assets/js/cg-styles.js?v=1722145213052" defer></script><script src="/assets/js/cg-4.js?v=1722145213052" defer></script><script src="/assets/js/cg-40.js?v=1722145213052" defer></script><script src="/assets/js/cg-2.js?v=1722145213052" defer></script><script src="/assets/js/cg-25.js?v=1722145213052" defer></script><script src="/assets/js/cg-app.js?v=1722145213052" defer></script>
+  </body>
+</html>
